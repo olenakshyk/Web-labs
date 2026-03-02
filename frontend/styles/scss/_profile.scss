@@ -1,0 +1,149 @@
+@use 'colors' as *;
+@use 'mixins' as *;
+@use 'base' as *;
+
+// profile layout wrapper
+.profile-layout {
+    @include responsive-layout;
+    gap: 20px;
+    animation: fade-in 0.5s ease-in-out;
+}
+
+// left pane: user info and actions
+.profile-sidebar {
+    @extend .base-card;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+}
+
+.profile-avatar-wrapper {
+    @include flex-center;
+    margin-bottom: 20px;
+}
+
+.profile-avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid $color-primary;
+}
+
+// role badge styling
+.role-badge {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-family: sans-serif;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.role-admin {
+    background-color: $color-primary;
+    color: $color-text-light;
+}
+
+.role-regular {
+    background-color: $color-secondary;
+    color: $color-text;
+    border: 1px solid $color-primary;
+}
+
+// action buttons area
+.account-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid $color-border;
+}
+
+.btn-secondary {
+    @extend .base-button;
+    background-color: $color-secondary;
+    color: $color-text;
+    border: 1px solid $color-border;
+    
+    &:hover {
+        background-color: $color-border;
+        color: $color-text;
+    }
+}
+
+.btn-danger {
+    @extend .base-button;
+    background-color: $color-text-light;
+    color: $color-primary;
+    border: 1px solid $color-primary;
+    
+    &:hover {
+        background-color: $color-primary;
+        color: $color-text-light;
+    }
+}
+
+.profile-content {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.performances-panel {
+    @extend .base-card;
+}
+
+.panel-heading {
+    font-family: georgia, serif;
+    color: $color-primary;
+    border-bottom: 2px solid $color-secondary;
+    padding-bottom: 10px;
+    margin-top: 0;
+}
+
+// mini performance cards for lists
+.mini-performance-card {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 10px 0;
+    border-bottom: 1px solid $color-border;
+    transition: background-color 0.3s ease;
+    
+    &:last-child {
+        border-bottom: 0;
+    }
+    
+    &:hover {
+        background-color: $color-secondary;
+    }
+}
+
+.mini-image {
+    width: 60px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.mini-details {
+    flex-grow: 1;
+}
+
+.mini-title {
+    font-family: georgia, serif;
+    margin: 0 0 5px 0;
+    color: $color-primary;
+}
+
+.mini-info {
+    font-family: sans-serif;
+    margin: 0;
+    font-size: 0.9em;
+    color: $color-text;
+}

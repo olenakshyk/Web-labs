@@ -1,0 +1,256 @@
+@use "mixins" as *;
+@use "base" as *;
+@use "colors" as *;
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+        transform: translate(0, 10px);
+    }
+    to {
+        opacity: 1;
+        transform: translate(0, 0);
+    }
+}
+
+.play-details-card {
+    @extend .base-card;
+    padding: 0;
+    overflow: hidden;
+    animation: fade-in 0.5s ease-in-out;
+}
+
+// hero section for the play image
+.play-hero {
+    position: relative;
+    display: flex;
+}
+
+.hero-image {
+    width: 100%;
+    height: auto;
+    max-height: 400px;
+    object-fit: cover;
+}
+
+.hero-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    color: $color-text-light;
+    box-sizing: border-box;
+}
+
+.play-title {
+    font-family: georgia, serif;
+    margin: 0;
+    font-size: 2em;
+}
+
+.play-tagline {
+    margin-top: 5px;
+    margin-bottom: 0;
+    font-style: italic;
+}
+
+// detailed information block
+.play-info {
+    padding: 20px;
+    border-bottom: 1px solid $color-border;
+}
+
+.info-heading {
+    font-family: georgia, serif;
+    color: $color-primary;
+}
+
+.info-text {
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.details-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.detail-item {
+    margin-bottom: 10px;
+    
+    &::before {
+        content: "✦ ";
+        color: $color-primary;
+    }
+}
+
+.detail-label {
+    font-weight: bold;
+}
+
+// booking form section
+.booking-section {
+    padding: 20px;
+    background-color: $color-secondary;
+}
+
+.booking-heading {
+    font-family: georgia, serif;
+    color: $color-primary;
+    text-align: center;
+}
+
+.booking-form {
+    @include flex-column;
+    gap: 15px;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.form-group {
+    @include flex-column;
+    gap: 5px;
+}
+
+.form-label {
+    font-family: sans-serif;
+    font-weight: bold;
+    color: $color-text;
+}
+
+.form-input {
+    padding: 10px;
+    border: 1px solid $color-border;
+    border-radius: 4px;
+    font-family: sans-serif;
+    transition: box-shadow 0.3s ease;
+    
+    &:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px $color-primary;
+    }
+}
+
+.submit-button {
+    @extend .base-button;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1em;
+    margin-top: 10px;
+    
+    &:hover {
+        background-color: $color-hover;
+        transform: scale(1.02);
+    }
+}
+
+// split layout for play details and booking
+.play-split-layout {
+    @include responsive-layout;
+    gap: 20px;
+    animation: fade-in 0.5s ease-in-out;
+}
+
+// left pane: details and seats
+.play-details-pane {
+    @extend .base-card;
+    flex: 2;
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.play-hero-image {
+    width: 100%;
+    height: auto;
+    max-height: 400px;
+    object-fit: cover;
+}
+
+.play-info-content {
+    padding: 20px;
+}
+
+.play-title-large {
+    font-family: georgia, serif;
+    color: $color-primary;
+    margin-top: 0;
+    font-size: 2.2em;
+}
+
+.play-description {
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+// seat selection section
+.seat-selection-section {
+    border-top: 1px solid $color-border;
+    padding-top: 20px;
+}
+
+.seat-heading {
+    font-family: georgia, serif;
+    color: $color-primary;
+}
+
+.seat-map {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.seat-checkbox {
+    display: none;
+    
+    // sibling selector to style the label when checked
+    &:checked + .seat-label {
+        background-color: $color-primary;
+        color: $color-text-light;
+        border-color: $color-primary;
+    }
+}
+
+.seat-label {
+    @include flex-center;
+    border: 1px solid $color-border;
+    border-radius: 4px;
+    padding: 10px;
+    cursor: pointer;
+    font-family: sans-serif;
+    font-weight: bold;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+    
+    &:hover {
+        background-color: $color-secondary;
+        border-color: $color-primary;
+    }
+}
+
+// right pane: booking form
+.play-booking-pane {
+    @extend .base-card;
+    flex: 1;
+    background-color: $color-secondary;
+    height: fit-content;
+    position: sticky;
+    top: 20px;
+}
+
+.booking-title {
+    font-family: georgia, serif;
+    color: $color-primary;
+    text-align: center;
+    margin-top: 0;
+}
+
+.booking-form-vertical {
+    @include flex-column;
+    gap: 15px;
+}
+

@@ -1,0 +1,235 @@
+@use 'colors' as *;
+@use 'mixins' as *;
+@use 'base' as *;
+
+.app-container {
+    @include flex-column;
+    font-family: arial, sans-serif;
+    background-color: $color-background;
+    color: $color-text;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+.site-header {
+    @include flex-center;
+    background-color: $color-primary;
+    padding: 16px;
+    justify-content: space-between;
+}
+
+.sidebar-toggle-label {
+    @extend .base-button;
+    cursor: pointer;
+
+    &:hover {
+        background-color: $color-hover;
+    }
+
+    &:active {
+        background-color: $color-active;
+    }
+}
+
+.sidebar-toggle-checkbox {
+    display: none;
+
+    &:checked ~ .sidebar-container {
+        transform: translate(0, 0);
+    }
+}
+
+.nav-list {
+    @include flex-center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 20px;
+}
+
+.nav-link {
+    font-family: georgia, serif;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease-in-out;
+
+    &:link {
+        color: $color-text-light;
+    }
+
+    &:visited {
+        color: $color-text-light;
+    }
+
+    &:hover {
+        color: $color-secondary;
+    }
+
+    &:active {
+        color: $color-active;
+    }
+}
+
+.sidebar-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 280px;
+    height: 100vh;
+    background-color: $color-secondary;
+    padding: 20px;
+    box-shadow: 2px 0 5px $color-border;
+    transform: translate(-100%, 0);
+    transition: transform 0.4s ease-in-out;
+    z-index: 1000;
+    overflow-y: auto;
+}
+
+.sidebar-close-label {
+    @extend .base-button;
+    display: block;
+    margin-bottom: 20px;
+    cursor: pointer;
+    background-color: $color-text;
+
+    &:hover {
+        background-color: $color-hover;
+    }
+}
+
+.sidebar-widget {
+    @extend .base-card;
+
+    &::before {
+        content: "🎭 ";
+    }
+}
+
+.widget-title {
+    font-family: georgia, serif;
+    color: $color-primary;
+    margin-top: 0;
+}
+
+.content-wrapper {
+    flex: 1;
+    padding: 20px;
+}
+
+.section-title {
+    font-family: georgia, serif;
+    color: $color-primary;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.performances-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 280px));
+    justify-content: center;
+    gap: 16px;
+    // max-width: 920px;
+    max-width: 80%;
+    margin: 0 auto;
+}
+
+.performance-card {
+    @extend .base-card;
+    @include flex-column;
+    padding: 0;
+    border: 0;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+
+    &:hover {
+        transform: translate(0, -5px);
+    }
+}
+
+.performance-image {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    display: block;
+    border-radius: 0;
+    margin-bottom: 0;
+}
+
+.performance-title {
+    font-family: georgia, serif;
+    margin-top: 0;
+    margin-bottom: 8px;
+    color: $color-primary;
+}
+
+.performance-body {
+    @include flex-column;
+    flex-grow: 1;
+    padding: 12px;
+}
+
+.performance-meta {
+    margin: 0;
+}
+
+.performance-desc {
+    flex-grow: 1;
+    line-height: 1.5;
+    margin-top: 0;
+    margin-bottom: 12px;
+}
+
+.performance-date,
+.performance-location {
+    @extend .performance-meta;
+    font-family: sans-serif;
+    color: $color-text;
+    margin-bottom: 8px;
+}
+
+.performance-date::before {
+    content: "📅 ";
+}
+
+.performance-location {
+    margin-bottom: 0;
+    font-weight: bold;
+
+    &::before {
+        content: "📍 ";
+    }
+}
+
+.book-link {
+    @extend .base-button;
+
+    &:link {
+        color: $color-text-light;
+    }
+
+    &:visited {
+        color: $color-text-light;
+    }
+
+    &:hover {
+        background-color: $color-hover;
+        color: $color-secondary;
+    }
+
+    &:active {
+        background-color: $color-active;
+    }
+}
+
+.site-footer {
+    @include flex-center;
+    background-color: $color-primary;
+    color: $color-text-light;
+    padding: 20px;
+    margin-top: auto;
+}
+
+.footer-text {
+    margin: 0;
+}

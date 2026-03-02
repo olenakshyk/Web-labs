@@ -1,0 +1,62 @@
+@use 'colors' as *;
+@use 'mixins' as *;
+@use 'base' as *;
+
+.auth-wrapper {
+    @include flex-center;
+    min-height: 60vh;
+    width: 100%;
+}
+
+.auth-card {
+    @extend .base-card;
+    width: 100%;
+    max-width: 400px;
+    animation: fade-in 0.5s ease-in-out;
+}
+
+.auth-header {
+    font-family: georgia, serif;
+    color: $color-primary;
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+// button layout for auth forms
+.auth-actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 25px;
+}
+
+.btn-cancel {
+    @extend .base-button;
+    background-color: $color-secondary;
+    color: $color-text;
+    border: 1px solid $color-border;
+    flex: 1;
+
+    &:hover {
+        background-color: $color-border;
+    }
+}
+
+.btn-submit {
+    @extend .base-button;
+    flex: 1;
+    border: none;
+    cursor: pointer;
+
+    &:hover {
+        background-color: $color-hover;
+    }
+}
+
+// specific input for dropdowns
+.role-select {
+    @extend .input-field;
+    background-color: $color-text-light;
+    cursor: pointer;
+}

@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>log in - theater app</title>
+    <link rel="stylesheet" href="styles/css/main.css">
+</head>
+<body>
+    <div class="app-container">
+        
+        <header class="site-header">
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-link">home</a></li>
+                    <li><a href="register.html" class="nav-link">register</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <div class="content-wrapper">
+            <main class="main-content">
+                
+                <section class="auth-wrapper">
+                    <article class="auth-card">
+                        <h1 class="auth-header">welcome back</h1>
+                        
+                        <form action="/authenticate" method="post" class="booking-form-vertical">
+                            
+                            <div class="form-group">
+                                <label for="login-email" class="form-label">email:</label>
+                                <input type="email" id="login-email" name="email" class="input-field" required="required" placeholder="user@example.com">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="login-password" class="form-label">password:</label>
+                                <input type="password" id="login-password" name="password" class="input-field" required="required" placeholder="********">
+                            </div>
+                            
+                            <div class="auth-actions">
+                                <a href="index.html" class="btn-cancel">cancel</a>
+                                <button type="submit" class="btn-submit">ok</button>
+                            </div>
+                            
+                        </form>
+                    </article>
+                </section>
+                
+            </main>
+        </div>
+
+        <footer class="site-footer">
+            <p class="footer-text">© 2026 theater app. all rights reserved.</p>
+        </footer>
+        
+    </div>
+</body>
+</html>

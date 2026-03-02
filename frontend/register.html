@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>register - theater app</title>
+    <link rel="stylesheet" href="styles/css/main.css">
+</head>
+<body>
+    <div class="app-container">
+        
+        <header class="site-header">
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="login.html" class="nav-link">log in</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <div class="content-wrapper">
+            <main class="main-content">
+                
+                <section class="auth-wrapper">
+                    <article class="auth-card">
+                        <h1 class="auth-header">create account</h1>
+                        
+                        <form action="/register-user" method="post" class="booking-form-vertical">
+                            
+                            <div class="form-group">
+                                <label for="reg-email" class="form-label">email:</label>
+                                <input type="email" id="reg-email" name="email" class="input-field" required="required" placeholder="user@example.com">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="reg-password" class="form-label">password:</label>
+                                <input type="password" id="reg-password" name="password" class="input-field" required="required" placeholder="********">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="reg-confirm" class="form-label">confirm password:</label>
+                                <input type="password" id="reg-confirm" name="confirm-password" class="input-field" required="required" placeholder="********">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="reg-role" class="form-label">role:</label>
+                                <select id="reg-role" name="role" class="role-select" required="required">
+                                    <option value="regular">regular user</option>
+                                    <option value="admin">administrator</option>
+                                </select>
+                            </div>
+                            
+                            <div class="auth-actions">
+                                <a href="index.html" class="btn-cancel">cancel</a>
+                                <button type="submit" class="btn-submit">ok</button>
+                            </div>
+                            
+                        </form>
+                    </article>
+                </section>
+                
+            </main>
+        </div>
+
+        <footer class="site-footer">
+            <p class="footer-text">© 2026 theater app. all rights reserved.</p>
+        </footer>
+        
+    </div>
+</body>
+</html>

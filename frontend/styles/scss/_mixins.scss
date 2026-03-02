@@ -1,0 +1,19 @@
+@mixin flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+@mixin responsive-layout {
+    display: flex;
+    flex-direction: column;
+    
+    @media (min-width: 768px) {
+        flex-direction: row;
+    }
+}

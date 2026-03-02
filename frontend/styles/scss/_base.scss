@@ -1,0 +1,36 @@
+@use 'colors' as *;
+@use 'mixins' as *;
+
+.base-card {
+    background-color: $color-text-light;
+    border: 1px solid $color-border;
+    border-radius: 8px;
+    padding: 16px;
+}
+
+.base-button {
+    display: inline-block;
+    background-color: $color-primary;
+    color: $color-text-light;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease-in-out;
+    font-family: sans-serif;
+    text-align: center;
+}
+
+.input-field {
+    padding: 12px;
+    border: 1px solid $color-border;
+    border-radius: 4px;
+    font-family: sans-serif;
+    transition: box-shadow 0.3s ease;
+    width: 100%;
+    box-sizing: border-box;
+    
+    &:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px $color-primary;
+    }
+}

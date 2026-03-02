@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Play details - Hamlet</title>
+    <link rel="stylesheet" href="styles/css/main.css">
+</head>
+<body>
+    <div class="app-container">
+        
+        <header class="site-header">
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="profile.html" class="nav-link">My profile</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <div class="content-wrapper">
+            <main class="main-content">
+                
+                <div class="play-split-layout">
+                    
+                    <article class="play-details-pane">
+                        <img src="hamlet-stage.jpg" alt="Hamlet main stage view" class="play-hero-image">
+                        
+                        <section class="play-info-content">
+                            <h1 class="play-title-large">Hamlet</h1>
+                            <p class="play-description">Experience the timeless masterpiece directed by visionary artists. This adaptation brings a modern twist to the classic tale of revenge, madness, and morality, featuring an award-winning cast on our spectacular main stage.</p>
+                            
+                            <div class="seat-selection-section">
+                                <h2 class="seat-heading">Select your seats</h2>
+                                <p class="seat-instruction">Click on the available seats below to add them to your reservation.</p>
+                                
+                                <div class="seat-map">
+                                    <input type="checkbox" id="seat-a1" class="seat-checkbox">
+                                    <label for="seat-a1" class="seat-label">a1</label>
+                                    
+                                    <input type="checkbox" id="seat-a2" class="seat-checkbox">
+                                    <label for="seat-a2" class="seat-label">a2</label>
+                                    
+                                    <input type="checkbox" id="seat-a3" class="seat-checkbox">
+                                    <label for="seat-a3" class="seat-label">a3</label>
+                                    
+                                    <input type="checkbox" id="seat-a4" class="seat-checkbox">
+                                    <label for="seat-a4" class="seat-label">a4</label>
+                                    
+                                    <input type="checkbox" id="seat-a5" class="seat-checkbox">
+                                    <label for="seat-a5" class="seat-label">a5</label>
+
+                                    <input type="checkbox" id="seat-b1" class="seat-checkbox">
+                                    <label for="seat-b1" class="seat-label">b1</label>
+                                    
+                                    <input type="checkbox" id="seat-b2" class="seat-checkbox">
+                                    <label for="seat-b2" class="seat-label">b2</label>
+                                    
+                                    <input type="checkbox" id="seat-b3" class="seat-checkbox">
+                                    <label for="seat-b3" class="seat-label">b3</label>
+                                    
+                                    <input type="checkbox" id="seat-b4" class="seat-checkbox">
+                                    <label for="seat-b4" class="seat-label">b4</label>
+                                    
+                                    <input type="checkbox" id="seat-b5" class="seat-checkbox">
+                                    <label for="seat-b5" class="seat-label">b5</label>
+                                </div>
+                            </div>
+                        </section>
+                    </article>
+
+                    <aside class="play-booking-pane">
+                        <h2 class="booking-title">Complete booking</h2>
+                        <form action="/submit-booking" method="post" class="booking-form-vertical">
+                            
+                            <div class="form-group">
+                                <label for="user-name" class="form-label">Full name:</label>
+                                <input type="text" id="user-name" name="name" class="input-field" required="required" placeholder="e.g. jane doe">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="user-email" class="form-label">Email address:</label>
+                                <input type="email" id="user-email" name="email" class="input-field" required="required" placeholder="jane@example.com">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="user-phone" class="form-label">Phone number:</label>
+                                <input type="tel" id="user-phone" name="phone" class="input-field" required="required" placeholder="+1 234 567 8900">
+                            </div>
+                            
+                            <button type="submit" class="submit-button">Confirm booking</button>
+                        </form>
+                    </aside>
+                    
+                </div>
+                
+            </main>
+        </div>
+
+        <footer class="site-footer">
+            <p class="footer-text">© 2026 Theater App.</p>
+        </footer>
+        
+    </div>
+</body>
+</html>

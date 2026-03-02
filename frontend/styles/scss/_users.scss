@@ -1,0 +1,118 @@
+@use "mixins" as *;
+@use "base" as *;
+@use "colors" as *;
+
+// user management layout
+.users-layout {
+    @include flex-column;
+    gap: 15px;
+    animation: fade-in 0.5s ease-in-out;
+}
+
+.users-header-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid $color-primary;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.users-title {
+    font-family: georgia, serif;
+    color: $color-primary;
+    margin: 0;
+}
+
+// individual user row card
+.user-card-row {
+    @extend .base-card;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    @media (min-width: 768px) {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &:hover {
+        transform: translate(0, -3px);
+    }
+}
+
+.user-info-group {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.user-avatar-small {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid $color-secondary;
+}
+
+.user-details-text {
+    @include flex-column;
+    gap: 5px;
+}
+
+.user-name {
+    font-family: georgia, serif;
+    margin: 0;
+    font-weight: bold;
+    color: $color-primary;
+}
+
+.user-email-text {
+    font-family: sans-serif;
+    margin: 0;
+    font-size: 0.9em;
+    color: $color-text;
+}
+
+// actions specifically for the user list
+.user-actions-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    
+    // adjust role badge margin for inline display
+    .role-badge {
+        margin-bottom: 0;
+    }
+}
+
+.btn-small {
+    @extend .base-button;
+    padding: 6px 12px;
+    font-size: 0.9em;
+}
+
+.btn-edit {
+    @extend .btn-small;
+    background-color: $color-secondary;
+    color: $color-text;
+    border: 1px solid $color-border;
+    
+    &:hover {
+        background-color: $color-border;
+    }
+}
+
+.btn-delete {
+    @extend .btn-small;
+    background-color: $color-text-light;
+    color: $color-primary;
+    border: 1px solid $color-primary;
+    
+    &:hover {
+        background-color: $color-primary;
+        color: $color-text-light;
+    }
+}

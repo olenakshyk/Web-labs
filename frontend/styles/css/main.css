@@ -227,6 +227,21 @@ body {
   width: fit-content;
 }
 
+.performance-actions {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.card-link {
+  margin-top: 0;
+}
+
+.bookmark::hover {
+  fill: black;
+}
+
 .play-split-layout {
   display: grid;
   grid-template-columns: 1fr;
@@ -639,47 +654,3 @@ body {
   font-size: 0.85rem;
   font-weight: 700;
 }/*# sourceMappingURL=main.css.map */
-.performance-actions {
-  margin-top: auto;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.card-link {
-  margin-top: 0;
-}
-
-.save-icon-button {
-  width: 38px;
-  height: 38px;
-  border: 1px solid #6b1028;
-  border-radius: 10px;
-  background-color: transparent;
-  color: #6b1028;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
-}
-
-.save-icon-button:hover {
-  background-color: #6b1028;
-  color: #ffffff;
-  border-color: #6b1028;
-}
-
-.save-icon {
-  width: 18px;
-  height: 18px;
-  display: block;
-  fill: transparent;
-  stroke: currentColor;
-  stroke-width: 2;
-  transition: fill 0.2s ease;
-}
-
-.save-icon-button:hover .save-icon {
-  fill: currentColor;
-}

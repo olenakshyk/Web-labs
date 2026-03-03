@@ -1,0 +1,79 @@
+@use 'colors' as *;
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: $color-text;
+    background: radial-gradient(circle at top right, $color-text-light 0%, $color-background 55%, $color-border 100%);
+}
+
+.base-card {
+    background-color: $color-surface;
+    border: 1px solid $color-border;
+    border-radius: 14px;
+    box-shadow: 0 10px 30px $color-shadow;
+    padding: 18px;
+}
+
+.base-button {
+    display: inline-block;
+    background-color: $color-primary;
+    color: $color-text-light;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    padding: 10px 16px;
+    text-decoration: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
+
+    &:hover {
+        background-color: $color-hover;
+        transform: translateY(-1px);
+        box-shadow: 0 8px 20px $color-shadow;
+    }
+
+    &:active {
+        background-color: $color-active;
+        transform: translateY(0);
+    }
+}
+
+.input-field,
+.role-select {
+    width: 100%;
+    border: 1px solid $color-border;
+    border-radius: 10px;
+    padding: 11px 12px;
+    font: inherit;
+    color: $color-text;
+    background-color: $color-text-light;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+    &:focus {
+        outline: none;
+        border-color: $color-primary-soft;
+        box-shadow: 0 0 0 3px $color-shadow;
+    }
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.form-label {
+    font-weight: 600;
+    color: $color-text;
+}
+
+.booking-form-vertical {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}

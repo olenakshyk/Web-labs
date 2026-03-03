@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile - Theater App</title>
+    <link rel="stylesheet" href="styles/css/main.css">
+</head>
+<body>
+    <div class="app-container">
+        <header class="site-header">
+            <nav class="main-nav" aria-label="Main navigation">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="users.html" class="nav-link">Users</a></li>
+                    <li><a href="profile.html" class="nav-link">My Profile</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <div class="content-wrapper">
+            <main class="main-content">
+                <h1 class="section-title">Account Dashboard</h1>
+
+                <div class="profile-layout">
+                    <aside class="profile-sidebar">
+                        <div class="profile-avatar-wrapper">
+                            <img src="assets/avatar-placeholder.svg" alt="User profile picture" class="profile-avatar">
+                        </div>
+
+                        <div class="role-badge role-admin">Admin User</div>
+
+                        <form action="/update-profile" method="post" class="booking-form-vertical">
+                            <div class="form-group">
+                                <label for="profile-name" class="form-label">Full Name</label>
+                                <input type="text" id="profile-name" name="name" class="input-field" value="Jane Doe" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="profile-email" class="form-label">Email Address</label>
+                                <input type="email" id="profile-email" name="email" class="input-field" value="jane@example.com" required>
+                            </div>
+
+                            <button type="submit" class="btn-secondary">Save Changes</button>
+                        </form>
+
+                        <section class="account-actions">
+                            <button type="button" class="btn-danger">Log Out</button>
+                            <button type="button" class="btn-danger">Delete Account</button>
+                        </section>
+                    </aside>
+
+                    <article class="profile-content">
+                        <section class="performances-panel">
+                            <h2 class="panel-heading">My Bookings</h2>
+
+                            <div class="mini-performance-card">
+                                <img src="assets/hamlet-poster.png" alt="Hamlet poster thumbnail" class="mini-image">
+                                <div class="mini-details">
+                                    <h3 class="mini-title">Hamlet</h3>
+                                    <p class="mini-info">Date: October 15, 2026 | Tickets: 2</p>
+                                </div>
+                                <a href="play.html" class="base-button">View Details</a>
+                            </div>
+
+                            <div class="mini-performance-card">
+                                <img src="assets/king-lear-poster.png" alt="King Lear performance poster" class="mini-image">
+                                <div class="mini-details">
+                                    <h3 class="mini-title">King Lear</h3>
+                                    <p class="mini-info">Date: November 2, 2026 | Tickets: 4</p>
+                                </div>
+                                <a href="play.html" class="base-button">View Details</a>
+                            </div>
+                        </section>
+
+                        <section class="performances-panel">
+                            <h2 class="panel-heading">Saved For Later</h2>
+
+                            <div class="mini-performance-card">
+                                <img src="assets/phantom-poster.png" alt="Phantom of the Opera thumbnail" class="mini-image">
+                                <div class="mini-details">
+                                    <h3 class="mini-title">Phantom of the Opera</h3>
+                                    <p class="mini-info">Place: Lyric Theater</p>
+                                </div>
+                                <a href="play.html" class="base-button">Book Now</a>
+                            </div>
+                        </section>
+                    </article>
+                </div>
+            </main>
+        </div>
+
+        <footer class="site-footer">
+            <p class="footer-text">© 2026 Theater App. All Rights Reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,98 @@
+@use 'colors' as *;
+@use 'mixins' as *;
+@use 'base' as *;
+
+.users-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.users-header-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.users-title {
+    margin: 0;
+    color: $color-primary;
+}
+
+.user-card-row {
+    @extend .base-card;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    @media (min-width: 760px) {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+
+.user-info-group {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.user-avatar-small {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid $color-primary-soft;
+}
+
+.user-name {
+    margin: 0;
+    color: $color-primary;
+    font-size: 1.05rem;
+}
+
+.user-email-text {
+    margin: 2px 0 0;
+    color: $color-muted;
+    font-size: 0.9rem;
+}
+
+.user-actions-group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.btn-small {
+    @extend .base-button;
+    padding: 8px 12px;
+    font-size: 0.9rem;
+}
+
+.btn-edit {
+    @extend .btn-small;
+    background-color: $color-text-light;
+    color: $color-primary;
+    border-color: $color-primary-soft;
+}
+
+.btn-delete {
+    @extend .btn-small;
+    background-color: $color-text-light;
+    color: $color-danger;
+    border-color: $color-danger;
+}
+
+.user-role-badge {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 700;
+}

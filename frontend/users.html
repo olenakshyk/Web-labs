@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Users - Theater App</title>
+    <link rel="stylesheet" href="styles/css/main.css">
+</head>
+<body>
+    <div class="app-container">
+        <header class="site-header">
+            <nav class="main-nav" aria-label="Main navigation">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="profile.html" class="nav-link">My Profile</a></li>
+                    <li><a href="users.html" class="nav-link">Users</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <div class="content-wrapper">
+            <main class="main-content">
+                <section class="users-layout">
+                    <div class="users-header-bar">
+                        <h1 class="users-title">User list</h1>
+                        <a href="register.html" class="base-button">Add New User</a>
+                    </div>
+
+                    <article class="user-card-row">
+                        <div class="user-info-group">
+                            <img src="assets/avatar-placeholder.svg" alt="Admin user avatar" class="user-avatar-small">
+                            <div class="user-details-text">
+                                <h2 class="user-name">Jane Doe</h2>
+                                <p class="user-email-text">jane.admin@example.com</p>
+                            </div>
+                        </div>
+
+                        <div class="user-actions-group">
+                            <span class="user-role-badge role-admin">Admin</span>
+                            <button type="button" class="btn-edit">Edit</button>
+                        </div>
+                    </article>
+
+                    <article class="user-card-row">
+                        <div class="user-info-group">
+                            <img src="assets/avatar-placeholder.svg" alt="Regular user avatar" class="user-avatar-small">
+                            <div class="user-details-text">
+                                <h2 class="user-name">John Smith</h2>
+                                <p class="user-email-text">john.smith@example.com</p>
+                            </div>
+                        </div>
+
+                        <div class="user-actions-group">
+                            <span class="user-role-badge role-regular">Regular</span>
+                            <button type="button" class="btn-edit">Edit</button>
+                            <button type="button" class="btn-delete">Delete</button>
+                        </div>
+                    </article>
+
+                    <article class="user-card-row">
+                        <div class="user-info-group">
+                            <img src="assets/avatar-placeholder.svg" alt="Regular user avatar" class="user-avatar-small">
+                            <div class="user-details-text">
+                                <h2 class="user-name">Alice Johnson</h2>
+                                <p class="user-email-text">alice.j@example.com</p>
+                            </div>
+                        </div>
+
+                        <div class="user-actions-group">
+                            <span class="user-role-badge role-regular">Regular</span>
+                            <button type="button" class="btn-edit">Edit</button>
+                            <button type="button" class="btn-delete">Delete</button>
+                        </div>
+                    </article>
+                </section>
+            </main>
+        </div>
+
+        <footer class="site-footer">
+            <p class="footer-text">© 2026 Theater App. All Rights Reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>

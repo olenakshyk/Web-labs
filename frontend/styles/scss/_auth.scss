@@ -1,0 +1,39 @@
+@use 'colors' as *;
+@use 'mixins' as *;
+@use 'base' as *;
+
+.auth-wrapper {
+    min-height: 70vh;
+    @include flex-center;
+}
+
+.auth-card {
+    @extend .base-card;
+    width: min(460px, 100%);
+}
+
+.auth-header {
+    margin-top: 0;
+    margin-bottom: 18px;
+    color: $color-primary;
+    text-align: center;
+}
+
+.auth-actions {
+    margin-top: 8px;
+    display: flex;
+    gap: 10px;
+}
+
+.btn-cancel,
+.btn-submit {
+    @extend .base-button;
+    flex: 1;
+    text-align: center;
+}
+
+.btn-cancel {
+    background-color: $color-text-light;
+    color: $color-primary;
+    border-color: $color-primary-soft;
+}

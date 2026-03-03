@@ -1,0 +1,122 @@
+@use 'colors' as *;
+@use 'mixins' as *;
+@use 'base' as *;
+
+.profile-layout {
+    @include responsive-layout;
+    gap: 18px;
+}
+
+.profile-sidebar {
+    @extend .base-card;
+    flex: 1;
+    height: fit-content;
+}
+
+.profile-avatar-wrapper {
+    text-align: center;
+    margin-bottom: 14px;
+}
+
+.profile-avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid $color-primary-soft;
+}
+
+.role-badge {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    margin-bottom: 14px;
+}
+
+.role-admin {
+    background-color: $color-primary;
+    color: $color-text-light;
+}
+
+.role-regular {
+    background-color: $color-secondary;
+    color: $color-primary;
+    border: 1px solid $color-primary-soft;
+}
+
+.account-actions {
+    margin-top: 18px;
+    padding-top: 14px;
+    border-top: 1px solid $color-border;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.btn-secondary {
+    @extend .base-button;
+    background-color: $color-text-light;
+    color: $color-primary;
+    border-color: $color-primary-soft;
+}
+
+.btn-danger {
+    @extend .base-button;
+    background-color: $color-text-light;
+    color: $color-danger;
+    border-color: $color-danger;
+}
+
+.profile-content {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.performances-panel {
+    @extend .base-card;
+}
+
+.panel-heading {
+    margin-top: 0;
+    margin-bottom: 14px;
+    color: $color-primary;
+}
+
+.mini-performance-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid $color-border;
+
+    &:last-child {
+        border-bottom: 0;
+    }
+}
+
+.mini-image {
+    width: 60px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.mini-details {
+    flex: 1;
+}
+
+.mini-title {
+    margin: 0 0 4px;
+    color: $color-primary;
+    font-size: 1rem;
+}
+
+.mini-info {
+    margin: 0;
+    color: $color-muted;
+    font-size: 0.92rem;
+}

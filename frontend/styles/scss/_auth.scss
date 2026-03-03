@@ -3,60 +3,37 @@
 @use 'base' as *;
 
 .auth-wrapper {
+    min-height: 70vh;
     @include flex-center;
-    min-height: 60vh;
-    width: 100%;
 }
 
 .auth-card {
     @extend .base-card;
-    width: 100%;
-    max-width: 400px;
-    animation: fade-in 0.5s ease-in-out;
+    width: min(460px, 100%);
 }
 
 .auth-header {
-    font-family: georgia, serif;
+    margin-top: 0;
+    margin-bottom: 18px;
     color: $color-primary;
     text-align: center;
-    margin-top: 0;
-    margin-bottom: 20px;
 }
 
-// button layout for auth forms
 .auth-actions {
+    margin-top: 8px;
     display: flex;
-    justify-content: space-between;
     gap: 10px;
-    margin-top: 25px;
 }
 
-.btn-cancel {
-    @extend .base-button;
-    background-color: $color-secondary;
-    color: $color-text;
-    border: 1px solid $color-border;
-    flex: 1;
-
-    &:hover {
-        background-color: $color-border;
-    }
-}
-
+.btn-cancel,
 .btn-submit {
     @extend .base-button;
     flex: 1;
-    border: none;
-    cursor: pointer;
-
-    &:hover {
-        background-color: $color-hover;
-    }
+    text-align: center;
 }
 
-// specific input for dropdowns
-.role-select {
-    @extend .input-field;
+.btn-cancel {
     background-color: $color-text-light;
-    cursor: pointer;
+    color: $color-primary;
+    border-color: $color-primary-soft;
 }

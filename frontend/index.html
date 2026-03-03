@@ -1,34 +1,21 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>theater performances</title>
+    <title>Theater Performances</title>
     <link rel="stylesheet" href="styles/css/main.css">
 </head>
 <body>
     <div class="app-container">
-        
-        <input type="checkbox" id="sidebar-toggle" class="sidebar-toggle-checkbox">
-        
-        <aside class="sidebar-container">
-            <label for="sidebar-toggle" class="sidebar-close-label">close menu</label>
-            
-            <section class="sidebar-widget">
-                <h2 class="widget-title">Filters</h2>
-                <p class="widget-desc">Search features will be added here later.</p>
-            </section>
-        </aside>
-
         <header class="site-header">
-            <label for="sidebar-toggle" class="sidebar-toggle-label">☰ Menu</label>
-            
-            <nav class="main-nav">
+            <nav class="main-nav" aria-label="Main navigation">
                 <ul class="nav-list">
                     <li><a href="index.html" class="nav-link">Home</a></li>
-                    <li><a href="profile.html" class="nav-link">My profile</a></li>
+                    <li><a href="profile.html" class="nav-link">My Profile</a></li>
                     <li><a href="users.html" class="nav-link">Users</a></li>
-                    <li><a href="login.html" class="nav-link">Log in</a></li>
+                    <li><a href="login.html" class="nav-link">Log In</a></li>
+                    <li><a href="register.html" class="nav-link">Register</a></li>
                 </ul>
             </nav>
         </header>
@@ -36,77 +23,96 @@
         <div class="content-wrapper">
             <main class="main-content">
                 <section class="performances-section">
-                    <h1 class="section-title">Current performances</h1>
-                    
+                    <h1 class="section-title">Current Performances</h1>
+
                     <div class="performances-list">
-                        
-                        <article class="performance-card" href="./play.html">
-                            <img src="assets/hamlet-poster.jpg" alt="hamlet performance poster" class="performance-image">
+                        <article class="performance-card">
+                            <img src="assets/hamlet-poster.png" alt="Hamlet performance poster" class="performance-image">
                             <div class="performance-body">
                                 <h2 class="performance-title">Hamlet</h2>
-                                <p class="performance-desc">A classic tragedy by William Shakespeare. A tale of madness and revenge.</p>
+                                <p class="performance-desc">A classic tragedy by William Shakespeare about revenge, loyalty, and conscience.</p>
                                 <p class="performance-date">March 12, 2026</p>
-                                <p class="performance-location">Main stage</p>
+                                <p class="performance-location">Main Stage</p>
+                                <div class="performance-actions">
+                                    <a href="play.html" class="base-button card-link">View Details</a>
+                                    <button type="button" class="save-icon-button" aria-label="Save performance" title="Save performance">
+                                        <svg class="save-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                                            <path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"></path>
+                                        </svg>
+                                    </button>
+                                </div>
                             </div>
                         </article>
 
                         <article class="performance-card">
-                            <img src="assets/hamlet-poster.jpg" alt="swan lake ballet poster" class="performance-image">
-                            <div class="performance-body">
-                                <h2 class="performance-title">Swan Lake</h2>
-                                <p class="performance-desc">A mesmerizing ballet performance featuring timeless music by Tchaikovsky.</p>
-                                <p class="performance-date">March 18, 2026</p>
-                                <p class="performance-location">Grand hall</p>
-                            </div>
-                        </article>
-
-                        <article class="performance-card">
-                            <img src="assets/hamlet-poster.jpg" alt="phantom of the opera poster" class="performance-image">
+                            <img src="assets/phantom-poster.png" alt="Phantom of the Opera poster" class="performance-image">
                             <div class="performance-body">
                                 <h2 class="performance-title">Phantom of the Opera</h2>
-                                <p class="performance-desc">The spectacular musical masterpiece that continues to thrill audiences worldwide.</p>
+                                <p class="performance-desc">A legendary musical with a dramatic story, unforgettable melodies, and spectacular staging.</p>
                                 <p class="performance-date">March 25, 2026</p>
-                                <p class="performance-location">Lyric theater</p>
+                                <p class="performance-location">Lyric Theater</p>
+                                <div class="performance-actions">
+                                    <a href="play.html" class="base-button card-link">View Details</a>
+                                    <button type="button" class="save-icon-button" aria-label="Save performance" title="Save performance">
+                                        <svg class="save-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                                            <path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"></path>
+                                        </svg>
+                                    </button>
+                                </div>
                             </div>
                         </article>
 
                         <article class="performance-card">
-                            <img src="assets/hamlet-poster.jpg" alt="phantom of the opera poster" class="performance-image">
+                            <img src="assets/macbeth-poster.png" alt="Macbeth performance poster" class="performance-image">
                             <div class="performance-body">
-                                <h2 class="performance-title">Phantom of the Opera</h2>
-                                <p class="performance-desc">The spectacular musical masterpiece that continues to thrill audiences worldwide.</p>
-                                <p class="performance-date">March 25, 2026</p>
-                                <p class="performance-location">Lyric theater</p>
+                                <h2 class="performance-title">Macbeth</h2>
+                                <p class="performance-desc">A gripping adaptation of ambition and downfall in a dark and atmospheric production.</p>
+                                <p class="performance-date">April 2, 2026</p>
+                                <p class="performance-location">Black Box Stage</p>
+                                <div class="performance-actions">
+                                    <a href="play.html" class="base-button card-link">View Details</a>
+                                    <button type="button" class="save-icon-button" aria-label="Save performance" title="Save performance">
+                                        <svg class="save-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                                            <path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"></path>
+                                        </svg>
+                                    </button>
+                                </div>
                             </div>
                         </article>
 
                         <article class="performance-card">
-                            <img src="assets/hamlet-poster.jpg" alt="phantom of the opera poster" class="performance-image">
+                            <img src="assets/king-lear-poster.png" alt="King Lear performance poster" class="performance-image">
                             <div class="performance-body">
-                                <h2 class="performance-title">Phantom of the Opera</h2>
-                                <p class="performance-desc">The spectacular musical masterpiece that continues to thrill audiences worldwide.</p>
-                                <p class="performance-date">March 25, 2026</p>
-                                <p class="performance-location">Lyric theater</p>
+                                <h2 class="performance-title">King Lear</h2>
+                                <p class="performance-desc">A powerful drama focused on family conflict, betrayal, and redemption.</p>
+                                <p class="performance-date">April 8, 2026</p>
+                                <p class="performance-location">Main Stage</p>
+                                <div class="performance-actions">
+                                    <a href="play.html" class="base-button card-link">View Details</a>
+                                    <button type="button" class="save-icon-button" aria-label="Save performance" title="Save performance">
+                                        <svg class="save-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                                            <path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"></path>
+                                        </svg>
+                                    </button>
+                                </div>
                             </div>
                         </article>
 
                         <article class="performance-card">
-                            <img src="assets/hamlet-poster.jpg" alt="phantom of the opera poster" class="performance-image">
+                            <img src="assets/tempest-poster.png" alt="The Tempest performance poster" class="performance-image">
                             <div class="performance-body">
-                                <h2 class="performance-title">Phantom of the Opera</h2>
-                                <p class="performance-desc">The spectacular musical masterpiece that continues to thrill audiences worldwide.</p>
-                                <p class="performance-date">March 25, 2026</p>
-                                <p class="performance-location">Lyric theater</p>
-                            </div>
-                        </article>
-
-                        <article class="performance-card">
-                            <img src="assets/hamlet-poster.jpg" alt="phantom of the opera poster" class="performance-image">
-                            <div class="performance-body">
-                                <h2 class="performance-title">Phantom of the Opera</h2>
-                                <p class="performance-desc">The spectacular musical masterpiece that continues to thrill audiences worldwide.</p>
-                                <p class="performance-date">March 25, 2026</p>
-                                <p class="performance-location">Lyric theater</p>
+                                <h2 class="performance-title">The Tempest</h2>
+                                <p class="performance-desc">A poetic staging of magic, reconciliation, and discovery with immersive visuals.</p>
+                                <p class="performance-date">April 14, 2026</p>
+                                <p class="performance-location">Riverside Theater</p>
+                                <div class="performance-actions">
+                                    <a href="play.html" class="base-button card-link">View Details</a>
+                                    <button type="button" class="save-icon-button" aria-label="Save performance" title="Save performance">
+                                        <svg class="save-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                                            <path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"></path>
+                                        </svg>
+                                    </button>
+                                </div>
                             </div>
                         </article>
                     </div>
@@ -115,9 +121,8 @@
         </div>
 
         <footer class="site-footer">
-            <p class="footer-text">© 2026 Theater App.</p>
+            <p class="footer-text">© 2026 Theater App. All Rights Reserved.</p>
         </footer>
-        
     </div>
 </body>
 </html>

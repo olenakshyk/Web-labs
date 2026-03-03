@@ -1,256 +1,165 @@
-@use "mixins" as *;
-@use "base" as *;
-@use "colors" as *;
+@use 'colors' as *;
+@use 'mixins' as *;
+@use 'base' as *;
 
-@keyframes fade-in {
-    from {
-        opacity: 0;
-        transform: translate(0, 10px);
-    }
-    to {
-        opacity: 1;
-        transform: translate(0, 0);
-    }
-}
-
-.play-details-card {
-    @extend .base-card;
-    padding: 0;
-    overflow: hidden;
-    animation: fade-in 0.5s ease-in-out;
-}
-
-// hero section for the play image
-.play-hero {
-    position: relative;
-    display: flex;
-}
-
-.hero-image {
-    width: 100%;
-    height: auto;
-    max-height: 400px;
-    object-fit: cover;
-}
-
-.hero-overlay {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-    padding: 20px;
-    color: $color-text-light;
-    box-sizing: border-box;
-}
-
-.play-title {
-    font-family: georgia, serif;
-    margin: 0;
-    font-size: 2em;
-}
-
-.play-tagline {
-    margin-top: 5px;
-    margin-bottom: 0;
-    font-style: italic;
-}
-
-// detailed information block
-.play-info {
-    padding: 20px;
-    border-bottom: 1px solid $color-border;
-}
-
-.info-heading {
-    font-family: georgia, serif;
-    color: $color-primary;
-}
-
-.info-text {
-    line-height: 1.6;
-    margin-bottom: 20px;
-}
-
-.details-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.detail-item {
-    margin-bottom: 10px;
-    
-    &::before {
-        content: "✦ ";
-        color: $color-primary;
-    }
-}
-
-.detail-label {
-    font-weight: bold;
-}
-
-// booking form section
-.booking-section {
-    padding: 20px;
-    background-color: $color-secondary;
-}
-
-.booking-heading {
-    font-family: georgia, serif;
-    color: $color-primary;
-    text-align: center;
-}
-
-.booking-form {
-    @include flex-column;
-    gap: 15px;
-    max-width: 400px;
-    margin: 0 auto;
-}
-
-.form-group {
-    @include flex-column;
-    gap: 5px;
-}
-
-.form-label {
-    font-family: sans-serif;
-    font-weight: bold;
-    color: $color-text;
-}
-
-.form-input {
-    padding: 10px;
-    border: 1px solid $color-border;
-    border-radius: 4px;
-    font-family: sans-serif;
-    transition: box-shadow 0.3s ease;
-    
-    &:focus {
-        outline: none;
-        box-shadow: 0 0 0 2px $color-primary;
-    }
-}
-
-.submit-button {
-    @extend .base-button;
-    border: none;
-    cursor: pointer;
-    font-size: 1.1em;
-    margin-top: 10px;
-    
-    &:hover {
-        background-color: $color-hover;
-        transform: scale(1.02);
-    }
-}
-
-// split layout for play details and booking
 .play-split-layout {
-    @include responsive-layout;
-    gap: 20px;
-    animation: fade-in 0.5s ease-in-out;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 18px;
+
+    @media (min-width: 980px) {
+        grid-template-columns: 1.05fr 1fr;
+        align-items: start;
+    }
 }
 
-// left pane: details and seats
 .play-details-pane {
     @extend .base-card;
-    flex: 2;
     padding: 0;
     overflow: hidden;
-    display: flex;
-    flex-direction: column;
 }
 
 .play-hero-image {
     width: 100%;
-    height: auto;
-    max-height: 400px;
+    max-height: 360px;
     object-fit: cover;
+    display: block;
 }
 
 .play-info-content {
-    padding: 20px;
+    padding: 18px;
 }
 
 .play-title-large {
-    font-family: georgia, serif;
-    color: $color-primary;
     margin-top: 0;
-    font-size: 2.2em;
+    color: $color-primary;
 }
 
 .play-description {
     line-height: 1.6;
-    margin-bottom: 30px;
+    color: $color-muted;
+    margin-bottom: 16px;
 }
 
-// seat selection section
-.seat-selection-section {
-    border-top: 1px solid $color-border;
-    padding-top: 20px;
+.play-meta-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 }
 
-.seat-heading {
-    font-family: georgia, serif;
+.play-meta-item {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.play-meta-label {
+    font-weight: 700;
     color: $color-primary;
 }
 
+.play-meta-value {
+    color: $color-text;
+}
+
+.seat-selection-pane {
+    @extend .base-card;
+}
+
+.seat-heading {
+    margin: 0 0 8px;
+    color: $color-primary;
+}
+
+.seat-instruction {
+    margin: 0 0 14px;
+    color: $color-muted;
+}
+
 .seat-map {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    display: flex;
+    flex-direction: column;
     gap: 10px;
-    margin-top: 15px;
+    overflow-x: auto;
+    padding-bottom: 6px;
+    align-items: center;
+}
+
+.seat-row {
+    display: grid;
+    grid-template-columns: 32px max-content;
+    align-items: center;
+    gap: 10px;
+    width: max-content;
+}
+
+.seat-row-label {
+    @include flex-center;
+    height: 32px;
+    font-weight: 700;
+    color: $color-primary;
+}
+
+.seat-row-seats {
+    display: grid;
+    grid-template-columns: repeat(10, 32px);
+    gap: 8px;
+}
+
+.seat-stage {
+    width: 434px;
+    max-width: 100%;
+    text-align: center;
+    padding: 8px 12px;
+    border: 1px solid $color-border;
+    border-radius: 8px;
+    background-color: $color-secondary;
+    color: $color-primary;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
 }
 
 .seat-checkbox {
-    display: none;
-    
-    // sibling selector to style the label when checked
-    &:checked + .seat-label {
-        background-color: $color-primary;
-        color: $color-text-light;
-        border-color: $color-primary;
-    }
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
 }
 
 .seat-label {
     @include flex-center;
+    width: 32px;
+    height: 32px;
     border: 1px solid $color-border;
-    border-radius: 4px;
-    padding: 10px;
+    border-radius: 50%;
+    font-size: 0.82rem;
+    font-weight: 700;
     cursor: pointer;
-    font-family: sans-serif;
-    font-weight: bold;
-    transition: background-color 0.3s ease, border-color 0.3s ease;
-    
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+
     &:hover {
-        background-color: $color-secondary;
         border-color: $color-primary;
+        background-color: $color-secondary;
     }
 }
 
-// right pane: booking form
-.play-booking-pane {
-    @extend .base-card;
-    flex: 1;
-    background-color: $color-secondary;
-    height: fit-content;
-    position: sticky;
-    top: 20px;
+.seat-checkbox:checked + .seat-label {
+    background-color: $color-primary;
+    border-color: $color-primary;
+    color: $color-text-light;
 }
 
-.booking-title {
-    font-family: georgia, serif;
-    color: $color-primary;
-    text-align: center;
-    margin-top: 0;
+.seat-continue {
+    display: block;
+    margin: 16px auto 0;
 }
 
-.booking-form-vertical {
-    @include flex-column;
-    gap: 15px;
+.submit-button-seat-continue {
+    @extend .base-button;
+    background-color: $color-text-light;
+    color: $color-danger;
+    border-color: $color-danger;
 }
-

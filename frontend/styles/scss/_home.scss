@@ -2,149 +2,107 @@
 @use 'mixins' as *;
 @use 'base' as *;
 
+@keyframes fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 .app-container {
-    @include flex-column;
-    font-family: arial, sans-serif;
-    background-color: $color-background;
-    color: $color-text;
-    margin: 0;
-    padding: 0;
     min-height: 100vh;
+    @include flex-column;
 }
 
 .site-header {
-    @include flex-center;
-    background-color: $color-primary;
-    padding: 16px;
-    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: linear-gradient(100deg, $color-primary-dark, $color-primary);
+    padding: 12px 18px;
+    border-bottom: 1px solid $color-shadow;
 }
 
-.sidebar-toggle-label {
-    @extend .base-button;
-    cursor: pointer;
-
-    &:hover {
-        background-color: $color-hover;
-    }
-
-    &:active {
-        background-color: $color-active;
-    }
-}
-
-.sidebar-toggle-checkbox {
-    display: none;
-
-    &:checked ~ .sidebar-container {
-        transform: translate(0, 0);
-    }
+.main-nav {
+    max-width: 1160px;
+    margin: 0 auto;
 }
 
 .nav-list {
-    @include flex-center;
     list-style: none;
     margin: 0;
     padding: 0;
-    gap: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
 }
 
 .nav-link {
-    font-family: georgia, serif;
+    display: inline-block;
+    color: $color-text-light;
     text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s ease-in-out;
+    font-weight: 600;
+    border-radius: 8px;
+    padding: 8px 12px;
+    transition: background-color 0.2s ease;
 
-    &:link {
-        color: $color-text-light;
+    &:hover,
+    &:focus-visible {
+        background-color: $color-shadow;
+        outline: none;
     }
-
-    &:visited {
-        color: $color-text-light;
-    }
-
-    &:hover {
-        color: $color-secondary;
-    }
-
-    &:active {
-        color: $color-active;
-    }
-}
-
-.sidebar-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 280px;
-    height: 100vh;
-    background-color: $color-secondary;
-    padding: 20px;
-    box-shadow: 2px 0 5px $color-border;
-    transform: translate(-100%, 0);
-    transition: transform 0.4s ease-in-out;
-    z-index: 1000;
-    overflow-y: auto;
-}
-
-.sidebar-close-label {
-    @extend .base-button;
-    display: block;
-    margin-bottom: 20px;
-    cursor: pointer;
-    background-color: $color-text;
-
-    &:hover {
-        background-color: $color-hover;
-    }
-}
-
-.sidebar-widget {
-    @extend .base-card;
-
-    &::before {
-        content: "🎭 ";
-    }
-}
-
-.widget-title {
-    font-family: georgia, serif;
-    color: $color-primary;
-    margin-top: 0;
 }
 
 .content-wrapper {
+    width: min(1160px, 100% - 32px);
+    margin: 24px auto 36px;
     flex: 1;
-    padding: 20px;
 }
 
 .section-title {
-    font-family: georgia, serif;
+    margin: 0 0 18px;
     color: $color-primary;
+    font-size: clamp(1.55rem, 2.6vw, 2rem);
+}
+
+.site-footer {
+    margin-top: auto;
+    background: linear-gradient(100deg, $color-primary-dark, $color-primary);
+    color: $color-text-light;
+    padding: 16px 20px;
     text-align: center;
-    margin-bottom: 30px;
+}
+
+.footer-text {
+    margin: 0;
+}
+
+.sidebar-toggle-checkbox,
+.sidebar-toggle-label,
+.sidebar-container,
+.sidebar-close-label,
+.sidebar-widget {
+    display: none;
 }
 
 .performances-list {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 280px));
-    justify-content: center;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 16px;
-    // max-width: 920px;
-    max-width: 80%;
-    margin: 0 auto;
 }
 
 .performance-card {
     @extend .base-card;
-    @include flex-column;
     padding: 0;
-    border: 0;
     overflow: hidden;
-    transition: transform 0.3s ease;
-
-    &:hover {
-        transform: translate(0, -5px);
-    }
+    display: flex;
+    flex-direction: column;
+    animation: fade-in 0.4s ease both;
 }
 
 .performance-image {
@@ -152,84 +110,90 @@
     aspect-ratio: 16 / 9;
     object-fit: cover;
     display: block;
-    border-radius: 0;
-    margin-bottom: 0;
-}
-
-.performance-title {
-    font-family: georgia, serif;
-    margin-top: 0;
-    margin-bottom: 8px;
-    color: $color-primary;
 }
 
 .performance-body {
-    @include flex-column;
-    flex-grow: 1;
-    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 14px;
 }
 
-.performance-meta {
+.performance-title {
     margin: 0;
+    color: $color-primary;
+    font-size: 1.15rem;
 }
 
 .performance-desc {
-    flex-grow: 1;
-    line-height: 1.5;
-    margin-top: 0;
-    margin-bottom: 12px;
+    margin: 0;
+    color: $color-muted;
+    line-height: 1.45;
 }
 
 .performance-date,
 .performance-location {
-    @extend .performance-meta;
-    font-family: sans-serif;
-    color: $color-text;
-    margin-bottom: 8px;
+    margin: 0;
+    font-size: 0.95rem;
 }
 
 .performance-date::before {
-    content: "📅 ";
+    content: 'Date: ';
+    font-weight: 700;
+    color: $color-primary;
 }
 
-.performance-location {
-    margin-bottom: 0;
-    font-weight: bold;
-
-    &::before {
-        content: "📍 ";
-    }
+.performance-location::before {
+    content: 'Place: ';
+    font-weight: 700;
+    color: $color-primary;
 }
 
-.book-link {
-    @extend .base-button;
+.card-link {
+    margin-top: auto;
+    width: fit-content;
+}
+.performance-actions {
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
 
-    &:link {
-        color: $color-text-light;
-    }
+.card-link {
+    margin-top: 0;
+}
 
-    &:visited {
-        color: $color-text-light;
-    }
+.save-icon-button {
+    width: 38px;
+    height: 38px;
+    border: 1px solid $color-primary;
+    border-radius: 10px;
+    background-color: transparent;
+    color: $color-primary;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 
     &:hover {
-        background-color: $color-hover;
-        color: $color-secondary;
-    }
-
-    &:active {
-        background-color: $color-active;
+        background-color: $color-primary;
+        color: $color-text-light;
+        border-color: $color-primary;
     }
 }
 
-.site-footer {
-    @include flex-center;
-    background-color: $color-primary;
-    color: $color-text-light;
-    padding: 20px;
-    margin-top: auto;
+.save-icon {
+    width: 18px;
+    height: 18px;
+    display: block;
+    fill: transparent;
+    stroke: currentColor;
+    stroke-width: 2;
+    transition: fill 0.2s ease;
 }
 
-.footer-text {
-    margin: 0;
+.save-icon-button:hover .save-icon {
+    fill: currentColor;
 }

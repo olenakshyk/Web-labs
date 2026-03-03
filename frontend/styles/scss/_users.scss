@@ -1,118 +1,98 @@
-@use "mixins" as *;
-@use "base" as *;
-@use "colors" as *;
+@use 'colors' as *;
+@use 'mixins' as *;
+@use 'base' as *;
 
-// user management layout
 .users-layout {
-    @include flex-column;
-    gap: 15px;
-    animation: fade-in 0.5s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
 }
 
 .users-header-bar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 2px solid $color-primary;
-    padding-bottom: 10px;
-    margin-bottom: 20px;
+    gap: 10px;
+    flex-wrap: wrap;
 }
 
 .users-title {
-    font-family: georgia, serif;
-    color: $color-primary;
     margin: 0;
+    color: $color-primary;
 }
 
-// individual user row card
 .user-card-row {
     @extend .base-card;
     display: flex;
     flex-direction: column;
-    gap: 15px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    gap: 12px;
 
-    @media (min-width: 768px) {
+    @media (min-width: 760px) {
         flex-direction: row;
-        align-items: center;
         justify-content: space-between;
-    }
-
-    &:hover {
-        transform: translate(0, -3px);
+        align-items: center;
     }
 }
 
 .user-info-group {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 12px;
 }
 
 .user-avatar-small {
-    width: 50px;
-    height: 50px;
+    width: 52px;
+    height: 52px;
     border-radius: 50%;
     object-fit: cover;
-    border: 2px solid $color-secondary;
-}
-
-.user-details-text {
-    @include flex-column;
-    gap: 5px;
+    border: 2px solid $color-primary-soft;
 }
 
 .user-name {
-    font-family: georgia, serif;
     margin: 0;
-    font-weight: bold;
     color: $color-primary;
+    font-size: 1.05rem;
 }
 
 .user-email-text {
-    font-family: sans-serif;
-    margin: 0;
-    font-size: 0.9em;
-    color: $color-text;
+    margin: 2px 0 0;
+    color: $color-muted;
+    font-size: 0.9rem;
 }
 
-// actions specifically for the user list
 .user-actions-group {
     display: flex;
     align-items: center;
-    gap: 10px;
-    
-    // adjust role badge margin for inline display
-    .role-badge {
-        margin-bottom: 0;
-    }
+    justify-content: center;
+    justify-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
 }
 
 .btn-small {
     @extend .base-button;
-    padding: 6px 12px;
-    font-size: 0.9em;
+    padding: 8px 12px;
+    font-size: 0.9rem;
 }
 
 .btn-edit {
     @extend .btn-small;
-    background-color: $color-secondary;
-    color: $color-text;
-    border: 1px solid $color-border;
-    
-    &:hover {
-        background-color: $color-border;
-    }
+    background-color: $color-text-light;
+    color: $color-primary;
+    border-color: $color-primary-soft;
 }
 
 .btn-delete {
     @extend .btn-small;
     background-color: $color-text-light;
-    color: $color-primary;
-    border: 1px solid $color-primary;
-    
-    &:hover {
-        background-color: $color-primary;
-        color: $color-text-light;
-    }
+    color: $color-danger;
+    border-color: $color-danger;
+}
+
+.user-role-badge {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 700;
 }

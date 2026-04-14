@@ -1,18 +1,18 @@
 <!doctype html>
-<html lang="en">
+<html lang="uk">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Play Details - Hamlet</title>
+    <title>Деталі вистави</title>
     <link rel="stylesheet" href="styles/css/main.css">
 </head>
 <body>
     <div class="app-container">
         <header class="site-header">
-            <nav class="main-nav" aria-label="Main navigation">
+            <nav class="main-nav" aria-label="Головна навігація">
                 <ul class="nav-list">
-                    <li><a href="index.html" class="nav-link">Home</a></li>
-                    <li><a href="profile.html" class="nav-link">My Profile</a></li>
+                    <li><a href="index.html" class="nav-link">Головна</a></li>
+                    <li><a href="profile.html" class="nav-link">Мій профіль</a></li>
                 </ul>
             </nav>
         </header>
@@ -21,166 +21,214 @@
             <main class="main-content">
                 <div class="play-split-layout">
                     <article class="play-details-pane">
-                        <img src="assets/hamlet-poster.png" alt="Hamlet main stage view" class="play-hero-image">
+                        <img id="playImage" src="assets/hamlet-poster.png" alt="Постер вистави" class="play-hero-image">
 
                         <section class="play-info-content">
-                            <h1 class="play-title-large">Hamlet</h1>
-                            <p class="play-description">Experience a modern adaptation of Shakespeare's timeless tragedy with an award-winning cast and cinematic staging.</p>
+                            <h1 id="playTitle" class="play-title-large">Завантаження...</h1>
+                            <p id="playDescription" class="play-description">Завантаження опису...</p>
 
                             <ul class="play-meta-list">
-                                <li class="play-meta-item"><span class="play-meta-label">Duration:</span> <span class="play-meta-value">2h 35m</span></li>
-                                <li class="play-meta-item"><span class="play-meta-label">Date:</span> <span class="play-meta-value">March 12, 2026</span></li>
-                                <li class="play-meta-item"><span class="play-meta-label">Time:</span> <span class="play-meta-value">19:00</span></li>
-                                <li class="play-meta-item"><span class="play-meta-label">Place:</span> <span class="play-meta-value">Main Stage</span></li>
+                                <li class="play-meta-item"><span class="play-meta-label">Тривалість:</span> <span id="playDuration" class="play-meta-value">—</span></li>
+                                <li class="play-meta-item"><span class="play-meta-label">Дата:</span> <span id="playDate" class="play-meta-value">—</span></li>
+                                <li class="play-meta-item"><span class="play-meta-label">Час:</span> <span id="playTime" class="play-meta-value">—</span></li>
+                                <li class="play-meta-item"><span class="play-meta-label">Місце:</span> <span id="playPlace" class="play-meta-value">—</span></li>
                             </ul>
                         </section>
                     </article>
 
                     <section class="seat-selection-pane">
-                        <h2 class="seat-heading">Select Your Seats</h2>
-                        <p class="seat-instruction">Choose available seats to add them to your reservation.</p>
+                        <h2 class="seat-heading">Виберіть місця</h2>
+                        <p id="seatSummary" class="seat-instruction">Оберіть вільні місця для бронювання.</p>
+                        <div class="seat-legend" aria-label="Легенда станів місць">
+                            <span class="seat-legend-item"><span class="seat-legend-dot is-available"></span>Вільні</span>
+                            <span class="seat-legend-item"><span class="seat-legend-dot is-sold"></span>Продані</span>
+                            <span class="seat-legend-item"><span class="seat-legend-dot is-selected"></span>Вибрані</span>
+                        </div>
+                        <p id="seatPricing" class="seat-instruction">Вибрано: 0 • Сума: 0</p>
 
-                        <div class="seat-map">
-                            <div class="seat-stage">Stage</div>
-
-                            <div class="seat-row">
-                                <span class="seat-row-label">1</span>
-                                <div class="seat-row-seats">
-                                    <input type="checkbox" id="seat-r1-s1" class="seat-checkbox"><label for="seat-r1-s1" class="seat-label">1</label>
-                                    <input type="checkbox" id="seat-r1-s2" class="seat-checkbox"><label for="seat-r1-s2" class="seat-label">2</label>
-                                    <input type="checkbox" id="seat-r1-s3" class="seat-checkbox"><label for="seat-r1-s3" class="seat-label">3</label>
-                                    <input type="checkbox" id="seat-r1-s4" class="seat-checkbox"><label for="seat-r1-s4" class="seat-label">4</label>
-                                    <input type="checkbox" id="seat-r1-s5" class="seat-checkbox"><label for="seat-r1-s5" class="seat-label">5</label>
-                                    <input type="checkbox" id="seat-r1-s6" class="seat-checkbox"><label for="seat-r1-s6" class="seat-label">6</label>
-                                    <input type="checkbox" id="seat-r1-s7" class="seat-checkbox"><label for="seat-r1-s7" class="seat-label">7</label>
-                                    <input type="checkbox" id="seat-r1-s8" class="seat-checkbox"><label for="seat-r1-s8" class="seat-label">8</label>
-                                    <input type="checkbox" id="seat-r1-s9" class="seat-checkbox"><label for="seat-r1-s9" class="seat-label">9</label>
-                                    <input type="checkbox" id="seat-r1-s10" class="seat-checkbox"><label for="seat-r1-s10" class="seat-label">10</label>
-                                </div>
-                            </div>
-
-                            <div class="seat-row">
-                                <span class="seat-row-label">2</span>
-                                <div class="seat-row-seats">
-                                    <input type="checkbox" id="seat-r2-s1" class="seat-checkbox"><label for="seat-r2-s1" class="seat-label">1</label>
-                                    <input type="checkbox" id="seat-r2-s2" class="seat-checkbox"><label for="seat-r2-s2" class="seat-label">2</label>
-                                    <input type="checkbox" id="seat-r2-s3" class="seat-checkbox"><label for="seat-r2-s3" class="seat-label">3</label>
-                                    <input type="checkbox" id="seat-r2-s4" class="seat-checkbox"><label for="seat-r2-s4" class="seat-label">4</label>
-                                    <input type="checkbox" id="seat-r2-s5" class="seat-checkbox"><label for="seat-r2-s5" class="seat-label">5</label>
-                                    <input type="checkbox" id="seat-r2-s6" class="seat-checkbox"><label for="seat-r2-s6" class="seat-label">6</label>
-                                    <input type="checkbox" id="seat-r2-s7" class="seat-checkbox"><label for="seat-r2-s7" class="seat-label">7</label>
-                                    <input type="checkbox" id="seat-r2-s8" class="seat-checkbox"><label for="seat-r2-s8" class="seat-label">8</label>
-                                    <input type="checkbox" id="seat-r2-s9" class="seat-checkbox"><label for="seat-r2-s9" class="seat-label">9</label>
-                                    <input type="checkbox" id="seat-r2-s10" class="seat-checkbox"><label for="seat-r2-s10" class="seat-label">10</label>
-                                </div>
-                            </div>
-
-                            <div class="seat-row">
-                                <span class="seat-row-label">3</span>
-                                <div class="seat-row-seats">
-                                    <input type="checkbox" id="seat-r3-s1" class="seat-checkbox"><label for="seat-r3-s1" class="seat-label">1</label>
-                                    <input type="checkbox" id="seat-r3-s2" class="seat-checkbox"><label for="seat-r3-s2" class="seat-label">2</label>
-                                    <input type="checkbox" id="seat-r3-s3" class="seat-checkbox"><label for="seat-r3-s3" class="seat-label">3</label>
-                                    <input type="checkbox" id="seat-r3-s4" class="seat-checkbox"><label for="seat-r3-s4" class="seat-label">4</label>
-                                    <input type="checkbox" id="seat-r3-s5" class="seat-checkbox"><label for="seat-r3-s5" class="seat-label">5</label>
-                                    <input type="checkbox" id="seat-r3-s6" class="seat-checkbox"><label for="seat-r3-s6" class="seat-label">6</label>
-                                    <input type="checkbox" id="seat-r3-s7" class="seat-checkbox"><label for="seat-r3-s7" class="seat-label">7</label>
-                                    <input type="checkbox" id="seat-r3-s8" class="seat-checkbox"><label for="seat-r3-s8" class="seat-label">8</label>
-                                    <input type="checkbox" id="seat-r3-s9" class="seat-checkbox"><label for="seat-r3-s9" class="seat-label">9</label>
-                                    <input type="checkbox" id="seat-r3-s10" class="seat-checkbox"><label for="seat-r3-s10" class="seat-label">10</label>
-                                </div>
-                            </div>
-
-                            <div class="seat-row">
-                                <span class="seat-row-label">4</span>
-                                <div class="seat-row-seats">
-                                    <input type="checkbox" id="seat-r4-s1" class="seat-checkbox"><label for="seat-r4-s1" class="seat-label">1</label>
-                                    <input type="checkbox" id="seat-r4-s2" class="seat-checkbox"><label for="seat-r4-s2" class="seat-label">2</label>
-                                    <input type="checkbox" id="seat-r4-s3" class="seat-checkbox"><label for="seat-r4-s3" class="seat-label">3</label>
-                                    <input type="checkbox" id="seat-r4-s4" class="seat-checkbox"><label for="seat-r4-s4" class="seat-label">4</label>
-                                    <input type="checkbox" id="seat-r4-s5" class="seat-checkbox"><label for="seat-r4-s5" class="seat-label">5</label>
-                                    <input type="checkbox" id="seat-r4-s6" class="seat-checkbox"><label for="seat-r4-s6" class="seat-label">6</label>
-                                    <input type="checkbox" id="seat-r4-s7" class="seat-checkbox"><label for="seat-r4-s7" class="seat-label">7</label>
-                                    <input type="checkbox" id="seat-r4-s8" class="seat-checkbox"><label for="seat-r4-s8" class="seat-label">8</label>
-                                    <input type="checkbox" id="seat-r4-s9" class="seat-checkbox"><label for="seat-r4-s9" class="seat-label">9</label>
-                                    <input type="checkbox" id="seat-r4-s10" class="seat-checkbox"><label for="seat-r4-s10" class="seat-label">10</label>
-                                </div>
-                            </div>
-
-                            <div class="seat-row">
-                                <span class="seat-row-label">5</span>
-                                <div class="seat-row-seats">
-                                    <input type="checkbox" id="seat-r5-s1" class="seat-checkbox"><label for="seat-r5-s1" class="seat-label">1</label>
-                                    <input type="checkbox" id="seat-r5-s2" class="seat-checkbox"><label for="seat-r5-s2" class="seat-label">2</label>
-                                    <input type="checkbox" id="seat-r5-s3" class="seat-checkbox"><label for="seat-r5-s3" class="seat-label">3</label>
-                                    <input type="checkbox" id="seat-r5-s4" class="seat-checkbox"><label for="seat-r5-s4" class="seat-label">4</label>
-                                    <input type="checkbox" id="seat-r5-s5" class="seat-checkbox"><label for="seat-r5-s5" class="seat-label">5</label>
-                                    <input type="checkbox" id="seat-r5-s6" class="seat-checkbox"><label for="seat-r5-s6" class="seat-label">6</label>
-                                    <input type="checkbox" id="seat-r5-s7" class="seat-checkbox"><label for="seat-r5-s7" class="seat-label">7</label>
-                                    <input type="checkbox" id="seat-r5-s8" class="seat-checkbox"><label for="seat-r5-s8" class="seat-label">8</label>
-                                    <input type="checkbox" id="seat-r5-s9" class="seat-checkbox"><label for="seat-r5-s9" class="seat-label">9</label>
-                                    <input type="checkbox" id="seat-r5-s10" class="seat-checkbox"><label for="seat-r5-s10" class="seat-label">10</label>
-                                </div>
-                            </div>
-
-                            <div class="seat-row">
-                                <span class="seat-row-label">6</span>
-                                <div class="seat-row-seats">
-                                    <input type="checkbox" id="seat-r6-s1" class="seat-checkbox"><label for="seat-r6-s1" class="seat-label">1</label>
-                                    <input type="checkbox" id="seat-r6-s2" class="seat-checkbox"><label for="seat-r6-s2" class="seat-label">2</label>
-                                    <input type="checkbox" id="seat-r6-s3" class="seat-checkbox"><label for="seat-r6-s3" class="seat-label">3</label>
-                                    <input type="checkbox" id="seat-r6-s4" class="seat-checkbox"><label for="seat-r6-s4" class="seat-label">4</label>
-                                    <input type="checkbox" id="seat-r6-s5" class="seat-checkbox"><label for="seat-r6-s5" class="seat-label">5</label>
-                                    <input type="checkbox" id="seat-r6-s6" class="seat-checkbox"><label for="seat-r6-s6" class="seat-label">6</label>
-                                    <input type="checkbox" id="seat-r6-s7" class="seat-checkbox"><label for="seat-r6-s7" class="seat-label">7</label>
-                                    <input type="checkbox" id="seat-r6-s8" class="seat-checkbox"><label for="seat-r6-s8" class="seat-label">8</label>
-                                    <input type="checkbox" id="seat-r6-s9" class="seat-checkbox"><label for="seat-r6-s9" class="seat-label">9</label>
-                                    <input type="checkbox" id="seat-r6-s10" class="seat-checkbox"><label for="seat-r6-s10" class="seat-label">10</label>
-                                </div>
-                            </div>
-
-                            <div class="seat-row">
-                                <span class="seat-row-label">7</span>
-                                <div class="seat-row-seats">
-                                    <input type="checkbox" id="seat-r7-s1" class="seat-checkbox"><label for="seat-r7-s1" class="seat-label">1</label>
-                                    <input type="checkbox" id="seat-r7-s2" class="seat-checkbox"><label for="seat-r7-s2" class="seat-label">2</label>
-                                    <input type="checkbox" id="seat-r7-s3" class="seat-checkbox"><label for="seat-r7-s3" class="seat-label">3</label>
-                                    <input type="checkbox" id="seat-r7-s4" class="seat-checkbox"><label for="seat-r7-s4" class="seat-label">4</label>
-                                    <input type="checkbox" id="seat-r7-s5" class="seat-checkbox"><label for="seat-r7-s5" class="seat-label">5</label>
-                                    <input type="checkbox" id="seat-r7-s6" class="seat-checkbox"><label for="seat-r7-s6" class="seat-label">6</label>
-                                    <input type="checkbox" id="seat-r7-s7" class="seat-checkbox"><label for="seat-r7-s7" class="seat-label">7</label>
-                                    <input type="checkbox" id="seat-r7-s8" class="seat-checkbox"><label for="seat-r7-s8" class="seat-label">8</label>
-                                    <input type="checkbox" id="seat-r7-s9" class="seat-checkbox"><label for="seat-r7-s9" class="seat-label">9</label>
-                                    <input type="checkbox" id="seat-r7-s10" class="seat-checkbox"><label for="seat-r7-s10" class="seat-label">10</label>
-                                </div>
-                            </div>
-
-                            <div class="seat-row">
-                                <span class="seat-row-label">8</span>
-                                <div class="seat-row-seats">
-                                    <input type="checkbox" id="seat-r8-s1" class="seat-checkbox"><label for="seat-r8-s1" class="seat-label">1</label>
-                                    <input type="checkbox" id="seat-r8-s2" class="seat-checkbox"><label for="seat-r8-s2" class="seat-label">2</label>
-                                    <input type="checkbox" id="seat-r8-s3" class="seat-checkbox"><label for="seat-r8-s3" class="seat-label">3</label>
-                                    <input type="checkbox" id="seat-r8-s4" class="seat-checkbox"><label for="seat-r8-s4" class="seat-label">4</label>
-                                    <input type="checkbox" id="seat-r8-s5" class="seat-checkbox"><label for="seat-r8-s5" class="seat-label">5</label>
-                                    <input type="checkbox" id="seat-r8-s6" class="seat-checkbox"><label for="seat-r8-s6" class="seat-label">6</label>
-                                    <input type="checkbox" id="seat-r8-s7" class="seat-checkbox"><label for="seat-r8-s7" class="seat-label">7</label>
-                                    <input type="checkbox" id="seat-r8-s8" class="seat-checkbox"><label for="seat-r8-s8" class="seat-label">8</label>
-                                    <input type="checkbox" id="seat-r8-s9" class="seat-checkbox"><label for="seat-r8-s9" class="seat-label">9</label>
-                                    <input type="checkbox" id="seat-r8-s10" class="seat-checkbox"><label for="seat-r8-s10" class="seat-label">10</label>
-                                </div>
-                            </div>
+                        <div id="seatMap" class="seat-map">
+                            <div class="seat-stage">Сцена</div>
+                            <p>Завантаження місць...</p>
                         </div>
 
-                        <div class="cont"><button type="button" class="submit-button-seat-continue">Continue</button></div>
+                        <div class="cont"><button type="button" class="submit-button-seat-continue">Продовжити</button></div>
                     </section>
                 </div>
             </main>
         </div>
 
         <footer class="site-footer">
-            <p class="footer-text">© 2026 Theater App. All Rights Reserved.</p>
+            <p class="footer-text">© 2026 Театральний застосунок. Усі права захищено.</p>
         </footer>
     </div>
+
+    <script type="module">
+        import { get } from "./RestUtils.js";
+
+        const API_BASE = "http://localhost:8000";
+        const playImageEl = document.getElementById("playImage");
+        const playTitleEl = document.getElementById("playTitle");
+        const playDescriptionEl = document.getElementById("playDescription");
+        const playDurationEl = document.getElementById("playDuration");
+        const playDateEl = document.getElementById("playDate");
+        const playTimeEl = document.getElementById("playTime");
+        const playPlaceEl = document.getElementById("playPlace");
+        const seatMapEl = document.getElementById("seatMap");
+        const seatSummaryEl = document.getElementById("seatSummary");
+        const seatPricingEl = document.getElementById("seatPricing");
+
+        const getParam = (name) => new URLSearchParams(window.location.search).get(name);
+
+        const buildImageUrl = (play) => {
+            if (play?.image_url) return play.image_url;
+            if (play?.image) {
+                if (play.image.startsWith("http")) return play.image;
+                return `${API_BASE}${play.image}`;
+            }
+            return "assets/hamlet-poster.png";
+        };
+
+        const renderSeatMap = (tickets) => {
+            seatMapEl.innerHTML = `<div class="seat-stage">Сцена</div>`;
+
+            if (!tickets.length) {
+                seatMapEl.insertAdjacentHTML("beforeend", "<p>Місця для цієї вистави не знайдені.</p>");
+                return;
+            }
+
+            const sortedTickets = [...tickets].sort((a, b) => {
+                const aNums = String(a?.seat || "").match(/\d+/g) || [];
+                const bNums = String(b?.seat || "").match(/\d+/g) || [];
+                const aNum = aNums.length ? Number(aNums[aNums.length - 1]) : Number.NaN;
+                const bNum = bNums.length ? Number(bNums[bNums.length - 1]) : Number.NaN;
+                if (!Number.isNaN(aNum) && !Number.isNaN(bNum)) return aNum - bNum;
+                return String(a?.seat || "").localeCompare(String(b?.seat || ""));
+            });
+
+            const rowsCount = Math.ceil(sortedTickets.length / 10);
+
+            for (let rowIndex = 0; rowIndex < rowsCount; rowIndex += 1) {
+                const rowTickets = sortedTickets.slice(rowIndex * 10, rowIndex * 10 + 10);
+                const rowEl = document.createElement("div");
+                rowEl.className = "seat-row";
+                rowEl.innerHTML = `<span class="seat-row-label">${rowIndex + 1}</span><div class="seat-row-seats"></div>`;
+                const seatsEl = rowEl.querySelector(".seat-row-seats");
+
+                for (let seatIndex = 0; seatIndex < rowTickets.length; seatIndex += 1) {
+                    const ticket = rowTickets[seatIndex];
+                    const seatLabel = ticket?.seat ?? String(seatIndex + 1);
+                    const ticketId = ticket.ticket_id || `${rowIndex + 1}-${seatIndex + 1}`;
+                    const seatId = `seat-${ticketId}`;
+                    const statusText = String(ticket.status || "").toLowerCase();
+                    console.log(statusText)
+                    const isSold = statusText.includes("проданий");
+
+                    const input = document.createElement("input");
+                    input.type = "checkbox";
+                    input.id = seatId;
+                    input.className = "seat-checkbox";
+                    input.disabled = isSold;
+                    input.dataset.ticketId = ticket.ticket_id ?? "";
+                    input.dataset.price = ticket.price ?? "";
+
+                    const label = document.createElement("label");
+                    label.className = `seat-label ${isSold ? "is-sold" : "is-available"}`;
+                    label.setAttribute("for", seatId);
+                    label.textContent = seatLabel;
+                    if (ticket.price) {
+                        label.title = `Ціна: ${ticket.price}`;
+                    }
+
+                    seatsEl.appendChild(input);
+                    seatsEl.appendChild(label);
+                }
+
+                seatMapEl.appendChild(rowEl);
+            }
+        };
+
+        const loadSchedule = async (scheduleId) => {
+            if (scheduleId) {
+            return get(`${API_BASE}/api/schedules/with-play/?schedule_id=${encodeURIComponent(scheduleId)}`);
+            }
+            const data = await get(`${API_BASE}/api/schedules/with-play/?page=1&limit=1`);
+            const items = Array.isArray(data) ? data : (data?.results || []);
+            return items[0] || null;
+        };
+
+        const loadPlay = async (playId) => {
+            if (!playId) return null;
+            return get(`${API_BASE}/api/plays/${playId}/`);
+        };
+
+        const loadTickets = async (scheduleId) => {
+            if (!scheduleId) return [];
+            const data = await get(`${API_BASE}/api/tickets/by-schedule/?schedule_id=${encodeURIComponent(scheduleId)}`);
+            return Array.isArray(data) ? data : [];
+        };
+
+        const renderDetails = (schedule, play) => {
+            if (!schedule) {
+                playTitleEl.textContent = "Виставу не знайдено";
+                playDescriptionEl.textContent = "Поверніться до списку та оберіть виставу.";
+                return;
+            }
+
+            const title = play?.name || schedule.play__name || "Без назви";
+            const description = play?.description || schedule.play__description || "Опис відсутній.";
+            const duration = play?.duration || schedule.play__duration;
+            const placeParts = [];
+            if (schedule.hall__theatre__name) placeParts.push(schedule.hall__theatre__name);
+            if (schedule.hall__name) placeParts.push(schedule.hall__name);
+            const place = placeParts.join(" • ") || "—";
+
+            playTitleEl.textContent = title;
+            playDescriptionEl.textContent = description;
+            playDurationEl.textContent = duration ? `${duration} хв` : "—";
+            playDateEl.textContent = schedule.date || "—";
+            playTimeEl.textContent = schedule.time || "—";
+            playPlaceEl.textContent = place;
+            playImageEl.src = buildImageUrl(play);
+            document.title = `Деталі вистави — ${title}`;
+        };
+
+        const init = async () => {
+            try {
+                const scheduleId = getParam("schedule_id");
+                const schedule = await loadSchedule(scheduleId);
+                const playId = getParam("play_id") || schedule?.play_id;
+                const play = await loadPlay(playId);
+                renderDetails(schedule, play);
+
+                if (schedule?.schedule_id) {
+                    const tickets = await loadTickets(schedule.schedule_id);
+                    renderSeatMap(tickets);
+                    const sold = tickets.filter((t) => String(t.status || "").toLowerCase().includes("проданий")).length;
+                    const available = tickets.length - sold;
+                    seatSummaryEl.textContent = `Вільні: ${available} • Продані: ${sold} • Всього: ${tickets.length}`;
+                    seatPricingEl.textContent = "Вибрано: 0 • Сума: 0";
+                } else {
+                    renderSeatMap([]);
+                    seatSummaryEl.textContent = "Розклад не вибрано.";
+                    seatPricingEl.textContent = "Вибрано: 0 • Сума: 0";
+                }
+            } catch (err) {
+                playTitleEl.textContent = "Не вдалося завантажити виставу";
+                playDescriptionEl.textContent = err.message || "Спробуйте пізніше.";
+                seatMapEl.innerHTML = `<div class="seat-stage">Сцена</div><p>Не вдалося завантажити місця.</p>`;
+            }
+        };
+
+        seatMapEl.addEventListener("change", () => {
+            const checked = Array.from(seatMapEl.querySelectorAll(".seat-checkbox:checked"));
+            const total = checked.reduce((sum, input) => {
+                const price = Number(input.dataset.price || 0);
+                return sum + (Number.isNaN(price) ? 0 : price);
+            }, 0);
+            seatPricingEl.textContent = `Вибрано: ${checked.length} • Сума: ${total}`;
+        });
+
+        init();
+    </script>
 </body>
 </html>

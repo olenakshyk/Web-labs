@@ -1,18 +1,18 @@
 <!doctype html>
-<html lang="en">
+<html lang="uk">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register - Theater App</title>
+    <title>Реєстрація</title>
     <link rel="stylesheet" href="styles/css/main.css">
 </head>
 <body>
     <div class="app-container">
         <header class="site-header">
-            <nav class="main-nav" aria-label="Main navigation">
+            <nav class="main-nav" aria-label="Головна навігація">
                 <ul class="nav-list">
-                    <li><a href="index.html" class="nav-link">Home</a></li>
-                    <li><a href="login.html" class="nav-link">Log In</a></li>
+                    <li><a href="index.html" class="nav-link">Головна</a></li>
+                    <li><a href="login.html" class="nav-link">Увійти</a></li>
                 </ul>
             </nav>
         </header>
@@ -21,35 +21,35 @@
             <main class="main-content">
                 <section class="auth-wrapper">
                     <article class="auth-card">
-                        <h1 class="auth-header">Create Account</h1>
+                        <h1 class="auth-header">Створити акаунт</h1>
 
                         <form action="/register-user" method="post" class="booking-form-vertical">
                             <div class="form-group">
-                                <label for="reg-email" class="form-label">Email</label>
+                                <label for="reg-email" class="form-label">Ел. пошта</label>
                                 <input type="email" id="reg-email" name="email" class="input-field" required placeholder="user@example.com">
                             </div>
 
                             <div class="form-group">
-                                <label for="reg-password" class="form-label">Password</label>
+                                <label for="reg-password" class="form-label">Пароль</label>
                                 <input type="password" id="reg-password" name="password" class="input-field" required placeholder="********">
                             </div>
 
                             <div class="form-group">
-                                <label for="reg-confirm" class="form-label">Confirm Password</label>
+                                <label for="reg-confirm" class="form-label">Підтвердіть пароль</label>
                                 <input type="password" id="reg-confirm" name="confirm-password" class="input-field" required placeholder="********">
                             </div>
 
                             <div class="form-group">
-                                <label for="reg-role" class="form-label">Role</label>
+                                <label for="reg-role" class="form-label">Роль</label>
                                 <select id="reg-role" name="role" class="role-select" required>
-                                    <option value="regular">Regular User</option>
-                                    <option value="admin">Administrator</option>
+                                    <option value="regular">Користувач</option>
+                                    <option value="admin">Адміністратор</option>
                                 </select>
                             </div>
 
                             <div class="auth-actions">
-                                <a href="index.html" class="btn-cancel">Cancel</a>
-                                <button type="submit" class="btn-submit">Create</button>
+                                <a href="index.html" class="btn-cancel">Скасувати</a>
+                                <button type="submit" class="btn-submit">Створити</button>
                             </div>
                         </form>
                     </article>
@@ -58,7 +58,7 @@
         </div>
 
         <footer class="site-footer">
-            <p class="footer-text">© 2026 Theater App. All Rights Reserved.</p>
+            <p class="footer-text">© 2026 Театральний застосунок. Жодних прав.</p>
         </footer>
     </div>
 </body>

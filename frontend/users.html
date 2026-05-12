@@ -1,19 +1,19 @@
 <!doctype html>
-<html lang="en">
+<html lang="uk">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manage Users - Theater App</title>
+    <title>Керування користувачами</title>
     <link rel="stylesheet" href="styles/css/main.css">
 </head>
 <body>
     <div class="app-container">
         <header class="site-header">
-            <nav class="main-nav" aria-label="Main navigation">
+            <nav class="main-nav" aria-label="Головна навігація">
                 <ul class="nav-list">
-                    <li><a href="index.html" class="nav-link">Home</a></li>
-                    <li><a href="profile.html" class="nav-link">My Profile</a></li>
-                    <li><a href="users.html" class="nav-link">Users</a></li>
+                    <li><a href="index.html" class="nav-link">Головна</a></li>
+                    <li><a href="profile.html" class="nav-link">Мій профіль</a></li>
+                    <li><a href="users.html" class="nav-link">Користувачі</a></li>
                 </ul>
             </nav>
         </header>
@@ -22,63 +22,124 @@
             <main class="main-content">
                 <section class="users-layout">
                     <div class="users-header-bar">
-                        <h1 class="users-title">User list</h1>
-                        <a href="register.html" class="base-button">Add New User</a>
+                        <h1 class="users-title">Список користувачів</h1>
+                        <a href="register.html" class="base-button">Додати користувача</a>
                     </div>
-
-                    <article class="user-card-row">
-                        <div class="user-info-group">
-                            <img src="assets/avatar-placeholder.svg" alt="Admin user avatar" class="user-avatar-small">
-                            <div class="user-details-text">
-                                <h2 class="user-name">Jane Doe</h2>
-                                <p class="user-email-text">jane.admin@example.com</p>
-                            </div>
-                        </div>
-
-                        <div class="user-actions-group">
-                            <span class="user-role-badge role-admin">Admin</span>
-                            <button type="button" class="btn-edit">Edit</button>
-                        </div>
-                    </article>
-
-                    <article class="user-card-row">
-                        <div class="user-info-group">
-                            <img src="assets/avatar-placeholder.svg" alt="Regular user avatar" class="user-avatar-small">
-                            <div class="user-details-text">
-                                <h2 class="user-name">John Smith</h2>
-                                <p class="user-email-text">john.smith@example.com</p>
-                            </div>
-                        </div>
-
-                        <div class="user-actions-group">
-                            <span class="user-role-badge role-regular">Regular</span>
-                            <button type="button" class="btn-edit">Edit</button>
-                            <button type="button" class="btn-delete">Delete</button>
-                        </div>
-                    </article>
-
-                    <article class="user-card-row">
-                        <div class="user-info-group">
-                            <img src="assets/avatar-placeholder.svg" alt="Regular user avatar" class="user-avatar-small">
-                            <div class="user-details-text">
-                                <h2 class="user-name">Alice Johnson</h2>
-                                <p class="user-email-text">alice.j@example.com</p>
-                            </div>
-                        </div>
-
-                        <div class="user-actions-group">
-                            <span class="user-role-badge role-regular">Regular</span>
-                            <button type="button" class="btn-edit">Edit</button>
-                            <button type="button" class="btn-delete">Delete</button>
-                        </div>
-                    </article>
+                    <div id="usersList">
+                        <p>Завантаження користувачів...</p>
+                    </div>
+                    <div class="pagination" id="usersPagination"></div>
                 </section>
             </main>
         </div>
 
         <footer class="site-footer">
-            <p class="footer-text">© 2026 Theater App. All Rights Reserved.</p>
+            <p class="footer-text">© 2026 Театральний застосунок. Усі права захищено.</p>
         </footer>
     </div>
+
+    <script type="module">
+        import { get } from "./RestUtils.js";
+
+        const API_BASE = "http://localhost:8000";
+        const usersListEl = document.getElementById("usersList");
+        const paginationEl = document.getElementById("usersPagination");
+        const PAGE_SIZE = 10;
+        const MAX_VISIBLE_PAGES = 7;
+
+        const renderUsers = (users) => {
+            if (!users.length) {
+                usersListEl.innerHTML = "<p>Користувачів не знайдено.</p>";
+                return;
+            }
+
+            usersListEl.innerHTML = users.map((user) => {
+                const name = user.username || user.email || "Без імені";
+                const email = user.email || "—";
+                const isAdmin = Boolean(user.is_staff || user.is_superuser);
+                const roleLabel = isAdmin ? "Адмін" : "Користувач";
+                const roleClass = isAdmin ? "role-admin" : "role-regular";
+                const avatarAlt = isAdmin ? "Аватар адміністратора" : "Аватар користувача";
+
+                return `
+                    <article class="user-card-row">
+                        <div class="user-info-group">
+                            <img src="assets/avatar-placeholder.svg" alt="${avatarAlt}" class="user-avatar-small">
+                            <div class="user-details-text">
+                                <h2 class="user-name">${name}</h2>
+                                <p class="user-email-text">${email}</p>
+                            </div>
+                        </div>
+
+                        <div class="user-actions-group">
+                            <span class="user-role-badge ${roleClass}">${roleLabel}</span>
+                            <button type="button" class="btn-edit">Редагувати</button>
+                            <button type="button" class="btn-delete">Видалити</button>
+                        </div>
+                    </article>
+                `;
+            }).join("");
+        };
+
+        const renderPagination = (currentPage, totalCount) => {
+            const totalPages = Math.max(1, Math.ceil(totalCount / PAGE_SIZE));
+
+            if (totalPages <= 1) {
+                paginationEl.innerHTML = "";
+                return;
+            }
+
+            const pages = [];
+            let start = Math.max(1, currentPage - Math.floor(MAX_VISIBLE_PAGES / 2));
+            let end = Math.min(totalPages, start + MAX_VISIBLE_PAGES - 1);
+            start = Math.max(1, end - MAX_VISIBLE_PAGES + 1);
+
+            for (let i = start; i <= end; i += 1) pages.push(i);
+
+            const buttons = [];
+
+            buttons.push(`<button class="page-btn" data-page="${Math.max(1, currentPage - 1)}" ${currentPage === 1 ? "disabled" : ""}>Назад</button>`);
+
+            if (start > 1) {
+                buttons.push(`<button class="page-btn" data-page="1">1</button>`);
+                if (start > 2) buttons.push(`<span class="page-ellipsis">...</span>`);
+            }
+
+            for (const p of pages) {
+                buttons.push(`<button class="page-btn ${p === currentPage ? "is-active" : ""}" data-page="${p}">${p}</button>`);
+            }
+
+            if (end < totalPages) {
+                if (end < totalPages - 1) buttons.push(`<span class="page-ellipsis">...</span>`);
+                buttons.push(`<button class="page-btn" data-page="${totalPages}">${totalPages}</button>`);
+            }
+
+            buttons.push(`<button class="page-btn" data-page="${Math.min(totalPages, currentPage + 1)}" ${currentPage === totalPages ? "disabled" : ""}>Далі</button>`);
+
+            paginationEl.innerHTML = buttons.join("");
+        };
+
+        const loadUsers = async (page = 1) => {
+            try {
+                const data = await get(`${API_BASE}/api/users/public/?page=${page}&limit=${PAGE_SIZE}`);
+                const users = Array.isArray(data) ? data : (data?.results || []);
+                renderUsers(users);
+                renderPagination(page, data?.count || users.length);
+            } catch (err) {
+                usersListEl.innerHTML = `<p>Не вдалося завантажити користувачів: ${err.message}</p>`;
+                paginationEl.innerHTML = "";
+            }
+        };
+
+        paginationEl.addEventListener("click", (event) => {
+            const btn = event.target.closest(".page-btn");
+            if (!btn || btn.disabled) return;
+            const page = Number(btn.dataset.page || "1");
+            if (Number.isNaN(page)) return;
+            loadUsers(page);
+        });
+
+        loadUsers(1);
+    </script>
 </body>
 </html>

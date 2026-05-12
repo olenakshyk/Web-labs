@@ -1,21 +1,21 @@
 <!doctype html>
-<html lang="en">
+<html lang="uk">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Theater Performances</title>
+    <title>Театральні вистави</title>
     <link rel="stylesheet" href="styles/css/main.css">
 </head>
 <body>
     <div class="app-container">
         <header class="site-header">
-            <nav class="main-nav" aria-label="Main navigation">
+            <nav class="main-nav" aria-label="Головна навігація">
                 <ul class="nav-list">
-                    <li><a href="index.html" class="nav-link">Home</a></li>
-                    <li><a href="profile.html" class="nav-link">My Profile</a></li>
-                    <li><a href="users.html" class="nav-link">Users</a></li>
-                    <li><a href="login.html" class="nav-link">Log In</a></li>
-                    <li><a href="register.html" class="nav-link">Register</a></li>
+                    <li><a href="index.html" class="nav-link">Головна</a></li>
+                    <li><a href="profile.html" class="nav-link">Мій профіль</a></li>
+                    <li><a href="users.html" class="nav-link">Користувачі</a></li>
+                    <li><a href="login.html" class="nav-link">Увійти</a></li>
+                    <li><a href="register.html" class="nav-link">Реєстрація</a></li>
                 </ul>
             </nav>
         </header>
@@ -23,86 +23,178 @@
         <div class="content-wrapper">
             <main class="main-content">
                 <section class="performances-section">
-                    <h1 class="section-title">Current Performances</h1>
-
-                    <div class="performances-list">
-                        <article class="performance-card">
-                            <img src="assets/hamlet-poster.png" alt="Hamlet performance poster" class="performance-image">
-                            <div class="performance-body">
-                                <h2 class="performance-title">Hamlet</h2>
-                                <p class="performance-desc">A classic tragedy by William Shakespeare about revenge, loyalty, and conscience.</p>
-                                <p class="performance-date">March 12, 2026</p>
-                                <p class="performance-location">Main Stage</p>
-                                <div class="performance-actions">
-                                    <a href="play.html" class="base-button card-link">View Details</a>
-                                    <img src="assets/bookmark.svg" alt="bookmark" class="bookmark">
-                                </div>
-                            </div>
-                        </article>
-
-                        <article class="performance-card">
-                            <img src="assets/phantom-poster.png" alt="Phantom of the Opera poster" class="performance-image">
-                            <div class="performance-body">
-                                <h2 class="performance-title">Phantom of the Opera</h2>
-                                <p class="performance-desc">A legendary musical with a dramatic story, unforgettable melodies, and spectacular staging.</p>
-                                <p class="performance-date">March 25, 2026</p>
-                                <p class="performance-location">Lyric Theater</p>
-                                <div class="performance-actions">
-                                    <a href="play.html" class="base-button card-link">View Details</a>
-                                    <img src="assets/bookmark.svg" alt="bookmark" >
-                                </div>
-                            </div>
-                        </article>
-
-                        <article class="performance-card">
-                            <img src="assets/macbeth-poster.png" alt="Macbeth performance poster" class="performance-image">
-                            <div class="performance-body">
-                                <h2 class="performance-title">Macbeth</h2>
-                                <p class="performance-desc">A gripping adaptation of ambition and downfall in a dark and atmospheric production.</p>
-                                <p class="performance-date">April 2, 2026</p>
-                                <p class="performance-location">Black Box Stage</p>
-                                <div class="performance-actions">
-                                    <a href="play.html" class="base-button card-link">View Details</a>
-                                    <img src="assets/bookmark.svg" alt="bookmark" >
-                                </div>
-                            </div>
-                        </article>
-
-                        <article class="performance-card">
-                            <img src="assets/king-lear-poster.png" alt="King Lear performance poster" class="performance-image">
-                            <div class="performance-body">
-                                <h2 class="performance-title">King Lear</h2>
-                                <p class="performance-desc">A powerful drama focused on family conflict, betrayal, and redemption.</p>
-                                <p class="performance-date">April 8, 2026</p>
-                                <p class="performance-location">Main Stage</p>
-                                <div class="performance-actions">
-                                    <a href="play.html" class="base-button card-link">View Details</a>
-                                    <img src="assets/bookmark.svg" alt="bookmark" >
-                                </div>
-                            </div>
-                        </article>
-
-                        <article class="performance-card">
-                            <img src="assets/tempest-poster.png" alt="The Tempest performance poster" class="performance-image">
-                            <div class="performance-body">
-                                <h2 class="performance-title">The Tempest</h2>
-                                <p class="performance-desc">A poetic staging of magic, reconciliation, and discovery with immersive visuals.</p>
-                                <p class="performance-date">April 14, 2026</p>
-                                <p class="performance-location">Riverside Theater</p>
-                                <div class="performance-actions">
-                                    <a href="play.html" class="base-button card-link">View Details</a>
-                                    <img src="assets/bookmark.svg" alt="bookmark" >
-                                </div>
-                            </div>
-                        </article>
+                    <h1 class="section-title">Актуальні вистави</h1>
+                    <div class="filters-bar">
+                        <label class="filter-label" for="citySelect">Місто</label>
+                        <select id="citySelect" class="filter-select">
+                            <option value="" selected>Завантаження міст...</option>
+                        </select>
                     </div>
+
+                    <div class="performances-list" id="performancesList">
+                        <p>Завантаження вистав...</p>
+                    </div>
+                    <div class="pagination" id="pagination"></div>
                 </section>
             </main>
         </div>
 
         <footer class="site-footer">
-            <p class="footer-text">© 2026 Theater App. All Rights Reserved.</p>
+            <p class="footer-text">© 2026 Театральний застосунок. Усі права захищено.</p>
         </footer>
     </div>
+
+    <script type="module">
+        import { get } from "./RestUtils.js";
+
+        const API_BASE = "http://localhost:8000";
+        const PAGE_SIZE = 12 ;
+        const MAX_VISIBLE_PAGES = 7;
+        const listEl = document.getElementById("performancesList");
+        const paginationEl = document.getElementById("pagination");
+        const citySelect = document.getElementById("citySelect");
+        const fallbackCities = ["Львів", "Київ", "Одеса", "Дніпро", "Харків"];
+
+        const normalizeItems = (data) => Array.isArray(data) ? data : (data?.results || []);
+
+        const buildImageUrl = (play) => {
+            if (play?.image_url) return play.image_url;
+            if (play?.image) {
+                if (play.image.startsWith("http")) return play.image;
+                return `${API_BASE}${play.image}`;
+            }
+            return "assets/hamlet-poster.png";
+        };
+
+        const renderSchedules = (items) => {
+            if (!items.length) {
+                listEl.innerHTML = "<p>Вистав не знайдено.</p>";
+                return;
+            }
+
+            listEl.innerHTML = items.map((item) => {
+                const title = item?.play__name || "Без назви";
+                const desc = item?.play__description || "Опис відсутній.";
+                const author = item?.play__author || "Невідомо";
+                const duration = item?.play__duration || "—";
+                const date = item?.date || "—";
+                const time = item?.time || "—";
+                const theatre = item?.hall__theatre__name || "Невідомо";
+                const hall = item?.hall__name || "Невідомо";
+                const city = item?.hall__theatre__city || "Невідомо";
+                const imageUrl = buildImageUrl({ image: null, image_url: null });
+
+                return `
+                    <article class="performance-card">
+                        <img src="${imageUrl}" alt="Постер: ${title}" class="performance-image" onerror="this.src='assets/hamlet-poster.png'">
+                        <div class="performance-body">
+                            <h2 class="performance-title">${title}</h2>
+                            <p class="performance-date">Дата: ${date} ${time}</p>
+                            <p class="performance-location">Театр: ${theatre}</p>
+                            <p class="performance-location">Тривалість: ${duration} хв</p>
+                            <div class="performance-actions">
+                                <a href="play.html?schedule_id=${item.schedule_id || ""}&play_id=${item.play_id || ""}" class="base-button card-link">Детальніше</a>
+                            </div>
+                        </div>
+                    </article>
+                `;
+            }).join("");
+        };
+
+        const renderPagination = (currentPage, totalCount) => {
+            const totalPages = Math.max(1, Math.ceil(totalCount / PAGE_SIZE));
+
+            if (totalPages <= 1) {
+                paginationEl.innerHTML = "";
+                return;
+            }
+
+            const pages = [];
+            let start = Math.max(1, currentPage - Math.floor(MAX_VISIBLE_PAGES / 2));
+            let end = Math.min(totalPages, start + MAX_VISIBLE_PAGES - 1);
+            start = Math.max(1, end - MAX_VISIBLE_PAGES + 1);
+
+            for (let i = start; i <= end; i += 1) pages.push(i);
+
+            const buttons = [];
+
+            buttons.push(`<button class="page-btn" data-page="${Math.max(1, currentPage - 1)}" ${currentPage === 1 ? "disabled" : ""}>Назад</button>`);
+
+            if (start > 1) {
+                buttons.push(`<button class="page-btn" data-page="1">1</button>`);
+                if (start > 2) buttons.push(`<span class="page-ellipsis">...</span>`);
+            }
+
+            for (const p of pages) {
+                buttons.push(`<button class="page-btn ${p === currentPage ? "is-active" : ""}" data-page="${p}">${p}</button>`);
+            }
+
+            if (end < totalPages) {
+                if (end < totalPages - 1) buttons.push(`<span class="page-ellipsis">...</span>`);
+                buttons.push(`<button class="page-btn" data-page="${totalPages}">${totalPages}</button>`);
+            }
+
+            buttons.push(`<button class="page-btn" data-page="${Math.min(totalPages, currentPage + 1)}" ${currentPage === totalPages ? "disabled" : ""}>Далі</button>`);
+
+            paginationEl.innerHTML = buttons.join("");
+        };
+
+        const loadSchedules = async (page = 1) => {
+            try {
+                const city = citySelect.value || "Львів";
+                const url = `${API_BASE}/api/schedules/with-play/?city=${encodeURIComponent(city)}&page=${page}&limit=${PAGE_SIZE}`;
+                const data = await get(url);
+                renderSchedules(normalizeItems(data));
+                renderPagination(page, data?.count || normalizeItems(data).length);
+            } catch (err) {
+                listEl.innerHTML = `<p>Не вдалося завантажити вистави: ${err.message}</p>`;
+                paginationEl.innerHTML = "";
+            }
+        };
+
+        const setCityOptions = (cities) => {
+            citySelect.innerHTML = "";
+            if (!cities.length) {
+                citySelect.innerHTML = `<option value="">Міст немає</option>`;
+                return;
+            }
+            for (const city of cities) {
+                const option = document.createElement("option");
+                option.value = city;
+                option.textContent = city;
+                citySelect.appendChild(option);
+            }
+            citySelect.value = cities[5];
+        };
+
+        const loadCities = async () => {
+            citySelect.innerHTML = `<option value="">Завантаження міст...</option>`;
+            try {
+                const data = await get(`${API_BASE}/api/theaters/cities/`);
+                const cities = Array.isArray(data) ? data : [];
+                if (!cities.length) throw new Error("Не повернуто жодного міста");
+                setCityOptions(cities);
+            } catch (_) {
+                setCityOptions(fallbackCities);
+            }
+        };
+
+        paginationEl.addEventListener("click", (event) => {
+            const btn = event.target.closest(".page-btn");
+            if (!btn || btn.disabled) return;
+            const page = Number(btn.dataset.page || "1");
+            if (Number.isNaN(page)) return;
+            loadSchedules(page);
+        });
+
+        citySelect.addEventListener("change", () => loadSchedules(1));
+
+        const init = async () => {
+            await loadCities();
+            await loadSchedules(1);
+        };
+
+        init();
+    </script>
 </body>
 </html>

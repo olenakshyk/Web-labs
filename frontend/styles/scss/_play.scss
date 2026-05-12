@@ -79,6 +79,45 @@
     color: $color-muted;
 }
 
+.seat-legend {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 0 0 14px;
+    color: $color-muted;
+    font-size: 0.9rem;
+}
+
+.seat-legend-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.seat-legend-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 1px solid $color-border;
+    background: $color-text-light;
+
+    &.is-available {
+        background: $color-text-light;
+        border-color: $color-primary;
+    }
+
+    &.is-sold {
+        background: #c9c9c9;
+        border-color: #a5a5a5;
+    }
+
+    &.is-selected {
+        background: $color-primary;
+        border-color: $color-primary;
+    }
+}
+
 .seat-map {
     display: flex;
     flex-direction: column;
@@ -140,10 +179,6 @@
     cursor: pointer;
     transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 
-    &:hover {
-        border-color: $color-primary;
-        background-color: $color-secondary;
-    }
 }
 
 .seat-checkbox:checked + .seat-label {
@@ -152,10 +187,34 @@
     color: $color-text-light;
 }
 
+.seat-label.is-available {
+    border-color: $color-primary;
+    background-color: $color-text-light;
+
+    &:hover {
+        border-color: $color-primary;
+        background-color: $color-secondary;
+    }
+}
+
+.seat-label.is-sold,
+.seat-checkbox:disabled + .seat-label {
+    background-color: #c9c9c9;
+    border-color: #a5a5a5;
+    color: #6b6b6b;
+    cursor: not-allowed;
+    
+    &:hover {
+        background-color: #c9c9c9;
+        border-color: #a5a5a5;
+        color: #6b6b6b;
+    }
+}
+
 .seat-continue {
     display: block;
     margin: 16px auto 0;
-}
+} 
 
 .submit-button-seat-continue {
     @extend .base-button;
